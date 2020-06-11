@@ -14,9 +14,9 @@
                         {{ \Carbon\Carbon::make($announce->created_at)->format('d.m.Y') }}
                         {{--                                    <p class="application_text m-0">Женская одежда</p>--}}
                     </div>
-                    {{--                                <div class="app_country">--}}
-                    {{--                                    <img src="{{asset('img/flag.png')}}" alt="Флаг">--}}
-                    {{--                                </div>--}}
+                                                    {{--<div class="app_country">--}}
+                                                        {{--<img src="{{asset('img/flag.png')}}" alt="Флаг">--}}
+                                                    {{--</div>--}}
                 </div>
             </div>
         </div>

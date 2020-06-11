@@ -218,6 +218,7 @@
 <script type="text/javascript" src="{{ asset('js/jquery.lazy.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery.lazy.plugins.min.js') }}"></script>
 
+
 <script>
     $('.div-lazy').lazy();
 </script>

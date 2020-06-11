@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/main.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/new.css') }}">
     <link rel="stylesheet" href="{{asset('css/slick.min.css')}}"/>
-
+    <link  rel="stylesheet"  href = "{{asset("css/intlTelInput.min.css")}}">
 
 
     @stack('styles')
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="{{ asset('js/jquery.lazy.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.lazy.plugins.min.js') }}"></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=1dc5f6a0-7f44-4dcf-8a38-15f7166f37dc&lang=ru_RU" type="text/javascript"></script>
-
+{{--<script src="{{ asset('js/intlTelInput-jquery.min.js') }}"></script>--}}
     <script>
         $('.div-lazy').lazy();
     </script>
@@ -35,13 +35,13 @@
         $(document).ready(function() {
             $(window).scroll(function() {
                 var scrollTop = $(window).scrollTop();
-                if (scrollTop >= 50 && window.location.href.indexOf("http://texmart/new-design/") < 0) {
+                if (scrollTop >= 50 && window.location.href.indexOf("http://newtexmart/new-design/") < 0) {
                     $('.menuse').removeClass('shadow-none');
                     $('.menuse').addClass('solid-nav');
                     $('.menuse').addClass('py-0');
                     $('.menuse').removeClass('pt-3');
 
-                } else if (window.location.href.indexOf("http://texmart/new-design/") < 0) {
+                } else if (window.location.href.indexOf("http://newtexmart/new-design/") < 0) {
                     $('.menuse').removeClass('solid-nav');
                     $('.menuse').addClass('shadow-none');
                     $('.menuse').removeClass('py-0');

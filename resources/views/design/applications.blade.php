@@ -14,6 +14,8 @@
                                             {{ \Illuminate\Support\Str::limit($announce->content, 150) }}
                                         </p>
                                     </a>
+                                    <div class="iti__flag iti__kg">
+                                    </div>
                                 </div>
                             </div>
                         </div>
