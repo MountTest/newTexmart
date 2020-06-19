@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+    public function announces() {
+        return $this->hasMany(Announce::class);
+    }
+
     public function childs() {
         return $this->hasMany(Category::class,'parent_id','id') ;
     }

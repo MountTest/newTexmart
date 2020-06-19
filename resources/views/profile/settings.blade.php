@@ -1,6 +1,6 @@
-@extends('profile.dashboard')
+{{--@extends('profile.dashboard')--}}
 
-@section('profile_content')
+{{--@section('profile_content')--}}
 <div class="tab-pane {{ request('sharp') ? '' : 'active' }}" id="settings" role="tabpanel" aria-labelledby="settings-tab">
     <p class="h1">Настройки профиля</p>
     <div class="container">
@@ -77,14 +77,14 @@
 
     </div>
 </div>
-@endsection
+{{--@endsection--}}
 
-@push('styles')
-    <link rel="stylesheet" href="{{ asset('css/cropper.min.css') }}">
-@endpush
+{{--@push('styles')--}}
+    {{--<link rel="stylesheet" href="{{ asset('css/cropper.min.css') }}">--}}
+{{--@endpush--}}
 
-@push('scripts')
-    <script src="{{ asset('js/cropper.min.js') }}"></script>
+{{--@push('scripts')--}}
+{{--    <script src="{{ asset('js/cropper.min.js') }}"></script>--}}
     {{--    <script src="{{ asset('js/jquery-cropper.js') }}"></script>--}}
     <script>
         let inputAvatar = $('#avatar');
@@ -169,4 +169,4 @@
             $('#editProfile').submit();
         })
     </script>
-@endpush
+{{--@endpush--}}

@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Announce;
+use App\Production;
+use App\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Midnite81\GeoLocation\Services\GeoLocation;
 
 class AdminController extends Controller
@@ -21,4 +25,6 @@ class AdminController extends Controller
     {
         return view('admin.dashboard');
     }
+
+
 }

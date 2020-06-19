@@ -177,17 +177,17 @@
 </div>
 
 
-@push('styles')
-    <link rel="stylesheet" href="{{asset("css/intlTelInput.min.css")}}">
-    <link rel="stylesheet" href="{{ asset('css/main.css')}}">
-@endpush
-@push('styles')
+{{--@push('styles')--}}
+    {{--<link rel="stylesheet" href="{{asset("css/intlTelInput.min.css")}}">--}}
+    {{--<link rel="stylesheet" href="{{ asset('css/main.css')}}">--}}
+{{--@endpush--}}
+{{--@push('styles')--}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.min.css">
-@endpush
-@push('scripts')
+{{--@endpush--}}
+{{--@push('scripts')--}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.min.js"></script>
-@endpush
-@push('scripts')
+{{--@endpush--}}
+{{--@push('scripts')--}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.js"></script>
     <script src="{{ asset('js/intlTelInput-jquery.min.js') }}"></script>
 
@@ -260,16 +260,16 @@
         });
     </script>
 
-@endpush
-@push('styles')
-    <link rel="stylesheet" href="{{ asset('css/cropper.min.css') }}">
-@endpush
+{{--@endpush--}}
+{{--@push('styles')--}}
+{{--    <link rel="stylesheet" href="{{ asset('css/cropper.min.css') }}">--}}
+{{--@endpush--}}
 
-@push('scripts')
+{{--@push('scripts')--}}
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="{{ asset('js/comboTreePlugin.js') }}"></script>
-    <script src="{{ asset('js/icontains.js') }}"></script>
+{{--    <script src="{{ asset('js/comboTreePlugin.js') }}"></script>--}}
+    {{--<script src="{{ asset('js/icontains.js') }}"></script>--}}
     <script>
         $.fn.extend({
             treed: function (o) {
@@ -391,21 +391,21 @@
             $('#dataImage2').val(cropper2.getImageData().rotate);
         });
     </script>
-    <script>
-        let intro = introJservice();
-        intro.setOptions({
-            prevLabel:"Назад",
-            nextLabel:"Вперед",
-            skipLabel:"Пропустить",
-            doneLabel:"Готово",
-            showProgress:true,
-            steps: [
-                {
-                    element: '.container.step_productions_3',
-                    intro: "Форма создание объявления услуги.Заполните форму."
-                },
-            ]
-        });
-        intro.start();
-    </script>
-@endpush
+    {{--<script>--}}
+        {{--let intro = introJservice();--}}
+        {{--intro.setOptions({--}}
+            {{--prevLabel:"Назад",--}}
+            {{--nextLabel:"Вперед",--}}
+            {{--skipLabel:"Пропустить",--}}
+            {{--doneLabel:"Готово",--}}
+            {{--showProgress:true,--}}
+            {{--steps: [--}}
+                {{--{--}}
+                    {{--element: '.container.step_productions_3',--}}
+                    {{--intro: "Форма создание объявления услуги.Заполните форму."--}}
+                {{--},--}}
+            {{--]--}}
+        {{--});--}}
+        {{--intro.start();--}}
+    {{--</script>--}}
+{{--@endpush--}}

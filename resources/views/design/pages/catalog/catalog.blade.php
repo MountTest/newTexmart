@@ -55,14 +55,7 @@
 
 @endsection
 @push('scripts')
-    <script>
-        $(document).ready(function(){
-            $('.menuse').removeClass('shadow-none');
-            $('.menuse').addClass('solid-nav');
-            $('.menuse').addClass('py-0');
-            $('.menuse').removeClass('pt-3');
-        });
-    </script>
+
     <script src="https://pagination.js.org/dist/2.1.4/pagination.min.js"></script>
     <script>
         function paginationWithDots(c, m) {

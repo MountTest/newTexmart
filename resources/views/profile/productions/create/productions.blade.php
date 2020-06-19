@@ -239,11 +239,11 @@
 </div>
 
 
-@push('styles')
-    <link rel="stylesheet" href="{{asset("css/intlTelInput.min.css")}}">
-    <link rel="stylesheet" href="{{ asset('css/main.css')}}">
-@endpush
-@push('scripts')
+{{--@push('styles')--}}
+    {{--<link rel="stylesheet" href="{{asset("css/intlTelInput.min.css")}}">--}}
+    {{--<link rel="stylesheet" href="{{ asset('css/main.css')}}">--}}
+{{--@endpush--}}
+{{--@push('scripts')--}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.js"></script>
     <script src="{{ asset('js/intlTelInput-jquery.min.js') }}"></script>
 
@@ -315,20 +315,15 @@
             $this.removeAttr('maxlength');
         });
     </script>
-
-@endpush
-@push('styles')
-    <link rel="stylesheet" href="{{ asset('css/cropper.min.css') }}">
+    {{--<link rel="stylesheet" href="{{ asset('css/cropper.min.css') }}">--}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.min.css">
-@endpush
-@push('scripts')
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.min.js"></script>
-@endpush
-@push('scripts')
+
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="{{ asset('js/comboTreePlugin.js') }}"></script>
-    <script src="{{ asset('js/icontains.js') }}"></script>
+    {{--<script src="{{ asset('js/comboTreePlugin.js') }}"></script>--}}
+    {{--<script src="{{ asset('js/icontains.js') }}"></script>--}}
     <script>
         $.fn.extend({
             treed: function (o) {
@@ -388,7 +383,7 @@
             $(this).siblings().toggle();
         });
     </script>
-    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+
     <script>
         tinymce.init({
             selector: '.richTextBox'
@@ -467,4 +462,4 @@
 {{--        intro.start();--}}
 {{--    </script>--}}
 
-@endpush
+{{--@endpush--}}

@@ -71,6 +71,7 @@
     <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.min.css') }}?v={{ filemtime(public_path('css/jquery.fancybox.min.css')) }}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}?v={{ filemtime(public_path('css/owl.carousel.min.css')) }}">
     <link rel="stylesheet" href="{{ asset('css/jquery.rateyo.min.css') }}?v={{ filemtime(public_path('css/jquery.rateyo.min.css')) }}">
+
     @stack('styles')
 </head>
 <body>
@@ -105,7 +106,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}?v={{ filemtime(public_path('css/main.min.css')) }}"></script>
     <!-- jquery steps -->
-    <script src="{{ asset('js/jquery.steps.js') }}?v={{ filemtime(public_path('css/main.min.css')) }}"></script>
+{{--    <script src="{{ asset('js/jquery.steps.js') }}?v={{ filemtime(public_path('css/main.min.css')) }}"></script>--}}
     <script src="{{ asset('js/mmenu.js') }}?v={{ filemtime(public_path('css/main.min.css')) }}"></script>
     <script src="{{asset('js/slick.min.js')}}?v={{ filemtime(public_path('css/main.min.css')) }}"></script>
     <script src="{{ asset('js/owl.carousel.min.js') }}?v={{ filemtime(public_path('css/main.min.css')) }}"></script>

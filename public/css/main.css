@@ -74,25 +74,25 @@ ul[role="tablist"] {
     transform: scale(1.04);
 }
 /*icon color on footer*/
-.fa-odnoklassniki-square:hover {
-    color: #ee8208 !important;
-}
+/*.fa-odnoklassniki-square:hover {*/
+    /*color: #ee8208 !important;*/
+/*}*/
 
-.fa-vk:hover {
-    color: #4a76a8 !important;
-}
+/*.fa-vk:hover {*/
+    /*color: #4a76a8 !important;*/
+/*}*/
 
-.fa-facebook:hover {
-    color: #4267b2 !important;
-}
+/*.fa-facebook:hover {*/
+    /*color: #4267b2 !important;*/
+/*}*/
 
-.fa-twitter:hover {
-    color: #1da1f2 !important;
-}
+/*.fa-twitter:hover {*/
+    /*color: #1da1f2 !important;*/
+/*}*/
 
-.fa-google:hover {
-    color: #ea4335 !important;
-}
+/*.fa-google:hover {*/
+    /*color: #ea4335 !important;*/
+/*}*/
 /*style for image sprite*/
 .hamburger-sprite{
     background: url('../images/sprite.png') no-repeat 0 -2px;
@@ -224,48 +224,7 @@ ul[role="tablist"] {
     transform: rotate(90deg) translateY(-50%);
 }
 
-.application_for {
-    border-left:10px solid #e58a7a;
-    border-radius:6px;background: #fff;
-    box-shadow:0 1px 6px 0 #d6e0e7;
-}
-.item_slider{
-    margin-bottom:15px;
-    padding:0;
-}
-.app_content{
-    padding:13px
-}
-.app_top {
-    overflow:hidden;
-    margin-bottom:16px;
-    height: 48px;
-}
-.app_bottom{
-    display:flex;
-    flex-wrap:nowrap;
-    justify-content:space-between;
-    height: 15px;
-}
-.app_category{
-    white-space:nowrap;
-    overflow:hidden;
-    height:21px;
-}
-.border-texmart{
-    border: 1px solid #CD882D!important;
-    box-sizing: border-box;
-    border-radius: 5px;
-}
-.application_text{
-    padding:3px 6px;
-    border-radius:4px;
-    background-color:#fff;
-    border:1px solid #d0d7dd;
-    letter-spacing:1px;
-    font:10px RalewayExtraBold,sans-serif;
-    display: block;
-}
+
 /*background for side panel*/
 .bg-texmart-service{
     background-color: rgba(205, 136, 45, 0.82);
@@ -921,10 +880,10 @@ ul[role="tablist"] {
     box-shadow: 0 1px 6px 0 #d6e0e7;
     margin-bottom: 30px;
 }
-.buttons_customer {
-    padding: 30px 0;
-    border-bottom: 1px solid #e9eff4;
-}
+/*.buttons_customer {*/
+    /*padding: 25px 0;*/
+    /*border-bottom: 1px solid #e9eff4;*/
+/*}*/
 .btn-block {
     width: 100%;
 }

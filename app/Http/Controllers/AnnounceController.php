@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Aloha\Twilio\Support\Laravel\Facade;
 use App\Announce;
+use App\Category;
 use App\Notifications\UserCreated;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
@@ -58,7 +60,7 @@ class AnnounceController extends Controller
     public function store(Request $request)
     {
         $type = $request->type;
-
+//        dd($request->all());
         if ($type == 'profile') {
             $announce = Announce::create([
                 'name' => auth()->user()->name,
@@ -67,6 +69,8 @@ class AnnounceController extends Controller
                 'phone' => auth()->user()->phone,
                 'email' => auth()->user()->email ? auth()->user()->email : ' ',
                 'user_id' => auth()->id(),
+                'locate' => $request->country,
+                'category_id' => $request->category
             ]);
 
             return redirect()->route('profile.announce.index');
@@ -119,13 +123,82 @@ class AnnounceController extends Controller
      * @param  \App\Announce  $announce
      * @return \Illuminate\Http\Response
      */
+    public function list()
+    {
+        $categories = Category::where('parent_id', null)->with('announces')->has('announces')->get();
+//        $announces = Announce::all();
+//        dd($categories);
+        return view('design.pages.announce.list', ['categories' => $categories]);
+    }
+
     public function show(Announce $announce)
     {
-        return view('announce.show', [
+        $viewed = Announce::getProductionViews($announce->id);
+
+        if (!$viewed) {
+            $announce->views = $announce->views + 1;
+            $announce->save();
+        }
+        return view('design.pages.announce.show', [
             'announce' => $announce,
         ]);
     }
 
+    public function new_filter(Request $request)
+    {
+        $params = $request->params;
+        $country = $request->country;
+        $cats = Category::all();
+        if ($params) {
+            $cats = $cats->whereIn('id', $params);
+        }
+
+
+        $announces = collect();
+        foreach ($cats as $cat) {
+            $announces = $announces->merge($cat->announces);
+        }
+//        dd($country);
+        $announces = $announces->unique('id');
+//        if ($country == null) {
+//            $announces = $announces->all();
+////            $products = $products->where('type', $type);
+//        }
+
+        if ($country != null && $country != 'none')
+        {
+            $announces = $announces->where('locate', $country);
+//            dd($announces);
+        }
+//        dd($announces);
+
+        return response()->json([
+            'html' => view('design.pages.announce.includes.single', [
+                'announces' => $announces,
+            ])->render(),
+            'announces' => $announces,
+            'count' => count($announces),
+            'filters' => $request->query->all(),
+//            'products' => $products,
+        ]);
+    }
+
+    public function like(Request $request) {
+        $announce = Announce::find($request->id);
+
+        if ($announce->like_users->find(Auth::id())){
+            $announce->like_users()->detach(Auth::id());
+            $status = false;
+        }
+        else {
+            $announce->like_users()->attach(Auth::id());
+            $status = true;
+        }
+
+        return response()->json([
+            'status' => $status,
+        ]);
+    }
     /**
      * Show the form for editing the specified resource.
      *

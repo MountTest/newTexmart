@@ -2,7 +2,7 @@
 
 
 @section('content')
-
+{{--@dd(\Illuminate\Support\Facades\Auth::user()->like_announces)--}}
     <section class="main-section"
              style="background-image: url('{{ asset('design/back.jpg') }}'); background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
 
@@ -337,6 +337,32 @@
     </style>
 @endpush
 @push('scripts')
+    <script>
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                var scrollTop = $(window).scrollTop();
+                if (scrollTop >= 50 && window.location.href.indexOf("http://newtexmart/new-design/") < 0 ) {
+                    $('.menuse').removeClass('shadow-none');
+                    $('.menuse').addClass('solid-nav');
+                    $('.menuse').addClass('py-0');
+                    $('.menuse').removeClass('pt-3');
+
+                } else if (window.location.href.indexOf("http://newtexmart/new-design/") < 0) {
+                    $('.menuse').removeClass('solid-nav');
+                    $('.menuse').addClass('shadow-none');
+                    $('.menuse').removeClass('py-0');
+                    $('.menuse').addClass('pt-3');
+                }
+            });
+            if (window.location.href.indexOf("http://newtexmart/new-design/") >= 0)
+            {
+                $('.menuse').removeClass('shadow-none');
+                $('.menuse').addClass('solid-nav');
+                $('.menuse').addClass('py-0');
+                $('.menuse').removeClass('pt-3');
+            }
+        });
+    </script>
     <script>
         $(document).ready(function () {
             // slick carousel

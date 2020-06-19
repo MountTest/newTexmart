@@ -1,6 +1,6 @@
-@extends('profile.dashboard')
+{{--@extends('profile.dashboard')--}}
 
-@section('profile_content')
+{{--@section('profile_content')--}}
     <div class="container">
         <div class="row justify-content-between">
             <div class="col-auto">
@@ -25,9 +25,10 @@
 {{--                                        <div class="app_category">--}}
 {{--                                            <p class="application_text" style="margin: 0em 0">Женская одежда</p>--}}
 {{--                                        </div>--}}
-{{--                                        <div class="app_country">--}}
-{{--                                            <img src="{{asset('img/flag.png')}}" alt="Флаг">--}}
-{{--                                        </div>--}}
+                                        {{--<div class="app_country">--}}
+                                            {{--<div class="iti__flag iti__{{$announce->locate}}">--}}
+                                            {{--</div>--}}
+                                                                                    {{--</div>--}}
                                     </div>
                                 </div>
                             </div>
@@ -39,4 +40,4 @@
             @endforelse
         </div>
     </div>
-@endsection
+{{--@endsection--}}

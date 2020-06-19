@@ -1,6 +1,6 @@
-@extends('profile.dashboard')
+{{--@extends('profile.dashboard')--}}
 
-@section('profile_content')
+{{--@section('profile_content')--}}
     <div class="container">
         <div class="row mb-4 justify-content-between">
             <div class="col-auto">
@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <div class="container shadow-lg pt-5 px-4 rounded">
+    <div class="container pt-5 px-4 rounded">
         <div class="row mb-5">
             <div class="col-12">
                 <h2>Производственные цеха</h2>
@@ -53,4 +53,4 @@
             @endforelse
         </div>
     </div>
-@endsection
+{{--@endsection--}}

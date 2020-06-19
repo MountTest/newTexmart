@@ -198,20 +198,19 @@
         </div>
     </div>
 </div>
-@push('styles')
+{{--@push('styles')--}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.min.css">
-@endpush
-@push('scripts')
+{{--@endpush--}}
+{{--@push('scripts')--}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.min.js"></script>
-@endpush
+{{--@endpush--}}
 
-@push('styles')
-    <link rel="stylesheet" href="{{asset("css/intlTelInput.min.css")}}">
-    <link rel="stylesheet" href="{{ asset('css/main.css')}}">
-@endpush
-@push('scripts')
+{{--@push('styles')--}}
+
+{{--@endpush--}}
+{{--@push('scripts')--}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.js"></script>
-    <script src="{{ asset('js/intlTelInput-jquery.min.js') }}"></script>
+<script src="{{ asset('js/intlTelInput-jquery.min.js') }}"></script>
 
     <script>
         /* INITIALIZE BOTH INPUTS WITH THE intlTelInput FEATURE*/
@@ -282,16 +281,15 @@
         });
     </script>
 
-@endpush
-@push('styles')
-    <link rel="stylesheet" href="{{ asset('css/cropper.min.css') }}">
-@endpush
+{{--@endpush--}}
+{{--@push('styles')--}}
 
-@push('scripts')
+{{--@endpush--}}
+
+{{--@push('scripts')--}}
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="{{ asset('js/comboTreePlugin.js') }}"></script>
-    <script src="{{ asset('js/icontains.js') }}"></script>
+
     <script>
         $.fn.extend({
             treed: function (o) {
@@ -361,7 +359,7 @@
         });
     </script>
     <script src="{{ asset('js/cropper.min.js') }}"></script>
-    {{--    <script src="{{ asset('js/jquery-cropper.js') }}"></script>--}}
+{{--        <script src="{{ asset('js/jquery-cropper.js') }}"></script>--}}
 
     <script>
         let input2 = $('#image-input2');
@@ -413,22 +411,22 @@
         });
     </script>
 
-    <script>
-        let intro = introJsproduct();
-        intro.setOptions({
-            prevLabel:"Назад",
-            nextLabel:"Вперед",
-            skipLabel:"Пропустить",
-            doneLabel:"Готово",
-            showProgress:true,
-            steps: [
-                {
-                    element: '.container.step_productions_2',
-                    intro: "Форма создание объявления товара.Заполните форму."
-                },
-            ]
-        });
-        intro.start();
-    </script>
-@endpush
+    {{--<script>--}}
+        {{--let intro = introJsproduct();--}}
+        {{--intro.setOptions({--}}
+            {{--prevLabel:"Назад",--}}
+            {{--nextLabel:"Вперед",--}}
+            {{--skipLabel:"Пропустить",--}}
+            {{--doneLabel:"Готово",--}}
+            {{--showProgress:true,--}}
+            {{--steps: [--}}
+                {{--{--}}
+                    {{--element: '.container.step_productions_2',--}}
+                    {{--intro: "Форма создание объявления товара.Заполните форму."--}}
+                {{--},--}}
+            {{--]--}}
+        {{--});--}}
+        {{--intro.start();--}}
+    {{--</script>--}}
+{{--@endpush--}}
 

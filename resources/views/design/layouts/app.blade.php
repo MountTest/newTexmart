@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
@@ -14,53 +14,64 @@
     <link rel="stylesheet" href="{{asset('css/slick.min.css')}}"/>
     <link  rel="stylesheet"  href = "{{asset("css/intlTelInput.min.css")}}">
 
-
     @stack('styles')
 </head>
 <body class="puff-in-center" style="overflow-x:hidden;">
-@include('design.partials.header')
+    @include('design.partials.header')
 <div id="backdrop" style="display: none;"></div>
     @yield('content')
     @include('design.includes.menu')
-<script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://kit.fontawesome.com/db4d90930c.js" crossorigin="anonymous"></script>
+
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{asset('js/slick.min.js')}}"></script>
+
     <script type="text/javascript" src="{{ asset('js/jquery.lazy.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.lazy.plugins.min.js') }}"></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=1dc5f6a0-7f44-4dcf-8a38-15f7166f37dc&lang=ru_RU" type="text/javascript"></script>
+
 {{--<script src="{{ asset('js/intlTelInput-jquery.min.js') }}"></script>--}}
     <script>
         $('.div-lazy').lazy();
     </script>
 <script>
         $(document).ready(function() {
+            var server_url = window.location.href;
             $(window).scroll(function() {
                 var scrollTop = $(window).scrollTop();
-                if (scrollTop >= 50 && window.location.href.indexOf("http://newtexmart/new-design/") < 0) {
+                if (scrollTop >= 50 && server_url == "http://newtexmart/new-design") {
                     $('.menuse').removeClass('shadow-none');
                     $('.menuse').addClass('solid-nav');
                     $('.menuse').addClass('py-0');
                     $('.menuse').removeClass('pt-3');
 
-                } else if (window.location.href.indexOf("http://newtexmart/new-design/") < 0) {
+                } else if (server_url == "http://newtexmart/new-design") {
                     $('.menuse').removeClass('solid-nav');
                     $('.menuse').addClass('shadow-none');
                     $('.menuse').removeClass('py-0');
                     $('.menuse').addClass('pt-3');
                 }
-
             });
+            if (server_url != "http://newtexmart/new-design")
+            {
+                $('.menuse').removeClass('shadow-none');
+                $('.menuse').addClass('solid-nav');
+                $('.menuse').addClass('py-0');
+                $('.menuse').removeClass('pt-3');
+            }
         });
     </script>
     <script>
         $(document).on('click', '.navbar-toggler', function (e) {
+            var server_url = window.location.href;
             var btn = $(e.currentTarget);
             var scrollTop = $(window).scrollTop();
-            if (scrollTop < 50 && btn.hasClass('collapsed') == false) {
+            if (scrollTop < 50 && btn.hasClass('collapsed') == false && server_url == "http://newtexmart/new-design") {
                 $('.menuse').removeClass('shadow-none');
                 $('.menuse').addClass('solid-nav');
                 $('.menuse').addClass('py-0');
 
-            } else if (scrollTop < 50 && btn.hasClass('collapsed') == true) {
+            } else if (scrollTop < 50 && btn.hasClass('collapsed') == true && server_url == "http://newtexmart/new-design") {
                 $('.menuse').removeClass('solid-nav');
                 $('.menuse').addClass('shadow-none');
                 $('.menuse').removeClass('py-0');

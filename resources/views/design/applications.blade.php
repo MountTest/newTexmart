@@ -14,13 +14,31 @@
                                             {{ \Illuminate\Support\Str::limit($announce->content, 150) }}
                                         </p>
                                     </a>
-                                    <div class="iti__flag iti__kg">
-                                    </div>
                                 </div>
+                                <div class="app_bottom">
+                                    <div>
+                                        @if(isset($announce->category->title))
+                                        <div class="d-flex align-items-center"
+                                             style="border:0.7px solid #000000; border-radius:5px; padding:4px 25px;">
+                                            {{ isset($announce->category->title) ? $announce->category->title : '' }}
+                                        </div>
+                                        @endif
+                                    </div>
+                                    @if(isset($announce->locate))
+                                        <div class="d-flex align-items-center justify-content-start ml-4">
+                                            <div class="iti__flag iti__{{$announce->locate}}">
+                                            </div>
+                                        </div>
+                                    @endif
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 @endforeach
+            </div>
+            <div class="form-group text-center mt-5">
+                <a href="{{ route('announces.list') }}" class="btn text-white px-5 py-2 texmart-border-radius texmart-bg-primary fade-link">Все заявки</a>
             </div>
         </div>
         <div class="col-1 d-none d-lg-block"></div>
