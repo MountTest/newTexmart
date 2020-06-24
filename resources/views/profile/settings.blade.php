@@ -2,15 +2,18 @@
 
 {{--@section('profile_content')--}}
 <div class="tab-pane {{ request('sharp') ? '' : 'active' }}" id="settings" role="tabpanel" aria-labelledby="settings-tab">
-    <p class="h1">Настройки профиля</p>
+
     <div class="container">
+        <p class="h3 pb-4">Настройки профиля</p>
         <div class="row">
-            <div class="col-6 image-preview-col">
+            <div class="col-lg-6 col-12 image-preview-col">
                 <form action="{{ route('user.edit', auth()->user()->id) }}" method="POST" id="editProfile" enctype="multipart/form-data">
                     @csrf
                     @method("PUT")
                     <div class="form-group">
-                        <label for="name" class="text-md-right"><i class="fas fa-user text-primary"></i> {{ __('ФИО') }}
+                        <label for="name" class="text-md-right">
+                            {{--<i class="fas fa-user text-primary"></i>--}}
+                            {{ __('ФИО') }}
                         </label>
                         <input id="name" type="text" class="form-control shadow-sm @error('name') is-invalid @enderror"
                                name="name" value="{{ auth()->user()->name ?? '' }}" required autocomplete="name" autofocus>
@@ -26,7 +29,7 @@
                         </label>
                         <input type="file" name="avatar" id="avatar" class="form-control">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mb-0">
                         <div>
                             <img src="" id="image-preview" style="max-width: 100%;" alt="">
                         </div>
@@ -41,16 +44,17 @@
                         <input type="hidden" name="width">
                         <input type="hidden" name="height">
                     </div>
-                    <button type="submit" id="submit-name-data" class="btn btn-success">Сохранить изменения</button>
+                    <button type="submit" id="submit-name-data" class="btn btn-texmart-orange text-white mt-3">Сохранить изменения</button>
                 </form>
             </div>
-            <div class="col-6">
+            <div class="col-lg-6 col-12 mt-lg-0 mt-5">
                 <form action="{{ route('user.password.edit', auth()->user()->id) }}" method="POST">
                     @csrf
                     @method("PUT")
                     <div class="form-group">
-                        <label for="password" class="text-md-right"><i
-                                class="fas fa-key text-primary"></i> {{ __('Пароль') }}</label>
+                        <label for="password" class="text-md-right">
+                            {{--<i class="fas fa-key text-primary"></i>--}}
+                            {{ __('Пароль') }}</label>
                         <input id="password" type="password"
                                class="form-control shadow-sm @error('password') is-invalid @enderror"
                                name="password"
@@ -64,13 +68,14 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="password-confirm" class="text-md-right"><i
-                                class="fas fa-key text-primary"></i> {{ __('Подтвердите пароль') }}</label>
+                        <label for="password-confirm" class="text-md-right">
+                            {{--<i class="fas fa-key text-primary"></i>--}}
+                            {{ __('Подтвердите пароль') }}</label>
                         <input id="password-confirm" type="password" class="form-control shadow-sm"
                                name="password_confirmation"
                                required autocomplete="new-password">
                     </div>
-                    <button type="submit" class="btn btn-success">Изменить пароль</button>
+                    <button type="submit" class="btn btn-texmart-orange text-white mt-3">Изменить пароль</button>
                 </form>
             </div>
         </div>

@@ -1,20 +1,29 @@
 @extends('profile.dashboard')
 
 @section('profile_content')
-    <section>
+    <section class="p-lg-5 p-2">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <form action="{{ route('profile.announce.store', ['type' => 'profile']) }}" method="post">
+                    <h2 class="h3">
+                        Создание объявления
+                    </h2>
+                </div>
+                <div class="col-12">
+                    <form action="{{ route('profile.announce.store', ['type' => 'profile']) }}" enctype="multipart/form-data" method="post">
                         @csrf
                         <div class="form-group">
                             <label>Описание</label>
-                            <textarea name="bid" id="bid" cols="30" rows="10" class="form-control"></textarea>
+                            <textarea name="bid" id="bid" cols="30" rows="5" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="images">Выберите изображения</label>
+                            <input type="file" name="images[]" class="form-control" id="images" multiple>
                         </div>
                         <div class="row">
-                        <div class="form-group col-6">
+                        <div class="form-group col-lg-6 col-12">
                             <label for="country">Выберите страну</label>
-                            <select name="country" class="form-control" id="country">
+                            <select name="country" class="form-control" id="country" required>
                                 <option value="kg">Кыргызстан</option>
                                 <option value="ru">Россия</option>
                                 <option value="kz">Казахстан</option>
@@ -258,7 +267,7 @@
                                 <option value="zw">Зимбабве</option>
                             </select>
                         </div>
-                            <div class="form-group col-6">
+                            <div class="form-group col-lg-6 col-12">
                                 <label for="category">Выберите категорию</label>
                                 <select name="category" class="form-control" id="category">
                                     @foreach(\App\Category::where('parent_id',null)->get() as $category)
@@ -267,7 +276,34 @@
                                 </select>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-success">Оставить заказ</button>
+
+                        <div class="row">
+                        <div class="form-group col-lg-6 col-12">
+                            <label for="price">Заполните цену</label>
+                            <div class="input-group">
+                            <input type="text" name="price" id="price" class="form-control" placeholder="Цена от ..." required>
+                            <select class="" name="currency" id="inputGroupSelect01">
+                                @foreach(['$', 'сом', 'руб'] as $currency)
+                                    <option value="{{ $currency }}" {{ $currency == old('currency') ? 'selected' : '' }}>{{ $currency }}</option>
+                                @endforeach
+                            </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-6 col-12">
+                            <label for="date">Выберите срок объявления</label>
+                            <div class="input-group">
+                                <input type="date" name="date" id="date" class="form-control" placeholder="Выберите дату..." required>
+                            </div>
+                        </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 d-flex">
+                                <button type="submit" class="btn btn-texmart-orange text-white w-100">Оставить заказ</button>
+                            </div>
+                        </div>
+
                     </form>
                 </div>
             </div>

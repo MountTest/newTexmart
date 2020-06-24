@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Session;
 
 class Announce extends Model
 {
-    protected $fillable = ['name', 'content', 'user_id', 'phone', 'code', 'email', 'locate', 'category_id'];
+    protected $fillable = ['name', 'content', 'user_id', 'phone', 'code', 'email', 'locate', 'category_id', 'price', 'currency', 'date'];
+    protected $casts = ['images'];
 
     public function user()
     {
@@ -22,6 +23,10 @@ class Announce extends Model
 
     public function category() {
         return $this->belongsTo(Category::class);
+    }
+
+    public function images() {
+        return $this->belongsToMany(AnnouncePhoto::class);
     }
 
     public static function getProductionViews($id)

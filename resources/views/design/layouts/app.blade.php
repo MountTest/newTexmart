@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="{{ asset('css/new.css') }}">
     <link rel="stylesheet" href="{{asset('css/slick.min.css')}}"/>
     <link  rel="stylesheet"  href = "{{asset("css/intlTelInput.min.css")}}">
+    <link rel="stylesheet" href="{{asset('css/slick.min.css')}}?v={{ filemtime(public_path('css/slick.min.css')) }}"/>
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}?v={{ filemtime(public_path('css/owl.carousel.min.css')) }}">
+    <link rel="stylesheet" href="{{ asset('css/jquery.rateyo.min.css') }}?v={{ filemtime(public_path('css/jquery.rateyo.min.css')) }}">
 
     @stack('styles')
 </head>
@@ -24,16 +27,28 @@
     <script src="https://kit.fontawesome.com/db4d90930c.js" crossorigin="anonymous"></script>
 
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{asset('js/slick.min.js')}}"></script>
 
     <script type="text/javascript" src="{{ asset('js/jquery.lazy.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.lazy.plugins.min.js') }}"></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=1dc5f6a0-7f44-4dcf-8a38-15f7166f37dc&lang=ru_RU" type="text/javascript"></script>
-
+    <script src="{{asset('js/slick.min.js')}}?v={{ filemtime(public_path('css/main.min.css')) }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}?v={{ filemtime(public_path('css/main.min.css')) }}"></script>
+    {{--connect rateyo.js--}}
+    <script src="{{ asset('js/intlTelInput-jquery.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.rateyo.js') }}?v={{ filemtime(public_path('css/main.min.css')) }}"></script>
 {{--<script src="{{ asset('js/intlTelInput-jquery.min.js') }}"></script>--}}
     <script>
         $('.div-lazy').lazy();
     </script>
+    {{--@if (Auth::check())--}}
+        {{--<script>--}}
+            {{--var timeout = ({{config('session.lifetime')}} * 60000) -10 ;--}}
+            {{--console.log(timeout);--}}
+            {{--setTimeout(function(){--}}
+                {{--window.location.href = "/login";--}}
+            {{--},  timeout);--}}
+        {{--</script>--}}
+    {{--@endif--}}
 <script>
         $(document).ready(function() {
             var server_url = window.location.href;
@@ -88,7 +103,7 @@
             {
                 $('.menuse').addClass('fade-in');
             }
-            $("a.fade-link").click(function(event){
+            $(document).on('click', '.fade-link', function(event){
                 event.preventDefault();
                 linkLocation = this.href;
                 $("body").fadeOut(1000, redirectPage);

@@ -154,7 +154,11 @@ class ProductionController extends Controller
         $ratings = Rating::of($production)->get();
         $rating = count($ratings) ? $ratings->avg('rating') : 0;
 
-        return view('productions.show', [
+        $others = $categories->first()->productions->random(4);
+
+
+        return view('design.pages.catalog.includes.productions.show', [
+            'others' => $others,
             'production' => $production,
             'categories' => $categories,
             'rating' => $rating,
@@ -371,7 +375,8 @@ class ProductionController extends Controller
             $productions = $productions->where('type', $type);
 //            $products = $products->where('type', $type);
         }
-
+//        dd($productions);
+//        dd($productions);
         $productions = $productions->map(function ($item) {
             return new Production($item->only(['id', 'slug', 'logo', 'title', 'views','phone1','phone2','user_id','address']));
         });
@@ -380,7 +385,7 @@ class ProductionController extends Controller
 
         return response()->json([
             'html' => view('design.pages.catalog.includes.productions.list', [
-                'productions' => $productions,
+                'productions' => $productions->shuffle(),
             ])->render(),
             'productions' => $productions,
             'count' => count($productions),

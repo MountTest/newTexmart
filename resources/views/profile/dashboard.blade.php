@@ -1,7 +1,7 @@
 @extends('design.layouts.app')
 
 @section('content')
-
+{{--@dd(auth())--}}
     <div class="container-fluid" style="margin-top: 61px;">
         @include('profile.partials.userbar')
         {{--<div class="row pt-5 align-items-center">--}}
@@ -17,8 +17,8 @@
                 {{--@include('profile.partials.sidebar')--}}
                 @include('profile.partials.newsidebar')
             </div>
-            <div class="col pt-4">
-                <section class="text-center blog-components">
+            <div class="col pt-4 px-lg-2 px-0">
+                <section class="blog-components">
                 @yield('profile_content')
                 </section>
             </div>
@@ -35,6 +35,11 @@
 
 @push('scripts')
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector:'textarea.description',
+        });
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.min.js"></script>
     {{--<script src="https://api-maps.yandex.ru/2.1/?apikey={{ env('YANDEX_MAPS_API_KEY') }}&lang=ru_RU" type="text/javascript"></script>--}}
     <script>

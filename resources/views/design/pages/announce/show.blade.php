@@ -1,4 +1,7 @@
 @extends('design.layouts.app')
+@push('styles')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+@endpush
 @section('content')
     <div class="container pt-5 mt-5">
         <div class="row">
@@ -73,13 +76,36 @@
                             {{ $announce->content }}
                         </h1>
                     </div>
+                    <div class="py-4">
+                        <div class="images row">
+                            @if($announce->images)
+                                @foreach($announce->images as $image)
+                                    <div class="col-lg-3 col-6">
+                                        <a data-fancybox="gallery{{$announce->id}}"
+                                           href="{{ asset('storage/'. $image->path) }}">
+                                            <div style="border:1px solid rgba(0,0,0,0.11); height:150px;background-image: url({{ asset('storage/'.str_replace('\\', '/', $image->path)) }}); background-position: center; background-size: cover;">
+
+                                            </div>
+                                        </a>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
+                    @if($announce->price)
+                    <div class="py-2">
+                        <p class="font-size-18">
+                            Цена: {{ $announce->price }} {{ $announce->currency }}
+                        </p>
+                    </div>
+                    @endif
                     <div class="p-lg-4 p-1 row justify-content-md-end justify-content-start">
                         <div class="col-auto d-lg-flex align-items-center d-block">
                             <p class="mb-lg-0 mb-3 mr-2">Поделиться:</p>
-                            <button class="social-icons ml-lg-2 ml-0 social-share-btn" data-url="{{ request()->url() }}" data-social="whatsapp"><i class="fab fa-whatsapp fa-lg"></i></button>
-                            <button class="social-icons ml-2 social-share-btn" data-url="{{ request()->url() }}" data-social="telegram"><i class="fab fa-telegram-plane fa-lg"></i></button>
+{{--                            <button class="social-icons ml-lg-2 ml-0 social-share-btn" data-url="{{ request()->url() }}" data-social="whatsapp"><i class="fab fa-whatsapp fa-lg"></i></button>--}}
+                            {{--<button class="social-icons ml-2 social-share-btn" data-url="{{ request()->url() }}" data-social="telegram"><i class="fab fa-telegram-plane fa-lg"></i></button>--}}
                             <button class="social-icons ml-2 social-share-btn" data-url="{{ request()->url() }}" data-social="facebook"><i class="fab fa-facebook-square fa-lg"></i></button>
-                            <button class="social-icons ml-2 social-share-btn" data-url="{{ request()->url() }}" data-social="instagram"><i class="fab fa-instagram fa-lg"></i></button>
+                            {{--<button class="social-icons ml-2 social-share-btn" data-url="{{ request()->url() }}" data-social="instagram"><i class="fab fa-instagram fa-lg"></i></button>--}}
                             <button class="social-icons ml-2 social-share-btn" data-url="{{ request()->url() }}" data-social="vk"><i class="fab fa-vk fa-lg"></i></button>
                         </div>
                     </div>
@@ -100,6 +126,7 @@
 @endsection
 
 @push('scripts')
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
     <script>
         $('.social-share-btn').click(e => {
             let btn = $(e.currentTarget);

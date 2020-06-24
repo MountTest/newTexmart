@@ -4,7 +4,7 @@
     <div class="app_content">
         <div class="d-flex">
         <div class="app_top col-lg-9 col-md-9 col-12">
-            <a class="text-dark" href="{{ route('announce.show', $announce) }}">
+            <a class="text-dark fade-link" href="{{ route('announce.show', $announce) }}">
                 <p class="m-0" title="{{ $announce->content }}">
                     {{ \Illuminate\Support\Str::limit($announce->content, 150) }}
                 </p>

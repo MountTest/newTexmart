@@ -1,16 +1,25 @@
 @extends('design.layouts.app')
 @section('content')
+    <div class="mobile-backdrop"></div>
+    <div class="mobile-catalog py-5 px-3" id="mobile-catalog">
+        <i class="fas fa-times position-absolute fa-lg close-mobile-catalog" style="top:2%; right:10%;"></i>
+        <p class="h3 texmart-text-primary">Каталог</p>
+        @include('design.pages.catalog.includes.left_sidebar', ['toggle' => true])
+    </div>
     <div class="container mt-5 pt-5">
         <div class="row">
-            <div class="col-lg-3 col-md-3 col-12">
+            <div class="col-lg-3 col-md-3 col-12 d-lg-block d-none">
                     <div class="mb-1">
-
                         @include('design.pages.catalog.includes.left_sidebar', ['toggle' => true])
                     </div>
 
             </div>
             <div class="col-lg-9 col-md-9 col-12">
                 <h2 class="texmart-text-primary h1" data-parent="title">База товаров наших производителей</h2>
+                <div class="row my-4 d-lg-none d-block">
+                    <div class="col-6"><i class="fas fa-bars fa-2x catalog-list"></i></div>
+                    <div class="col-6"></div>
+                </div>
                 <div class="row my-3">
                     <div class="col-lg-6 col-md-6 col-12">
                         <button class="texmart-button" data-parent="type" data-value="productions">
@@ -20,7 +29,7 @@
                             Товары
                         </button>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-12 d-flex align-items-center justify-content-center pb-2 mt-lg-0 mtmd-0 mt-3">
+                    <div class="col-lg-6 col-md-6 col-12 d-lg-flex d-none align-items-center justify-content-center pb-2 mt-lg-0 mtmd-0 mt-3">
                         <a href="" class="link-style">Создать заявку</a>
                         <div class="mx-2 h-100 bg-dark" style="width:1.5px;"></div>
                         <a href="" class="link-style">Добавить компанию</a>
@@ -100,10 +109,10 @@
     </script>
     <script>
         let params = [];
-        let productionsPage = window.localStorage.getItem('productionsPage');
-        if (productionsPage) {
-            params.page = productionsPage;
-        }
+        // let productionsPage = window.localStorage.getItem('productionsPage');
+        // if (productionsPage) {
+            params.page = 1;
+        // }
         $('input[name="categories[]"]').change(e => {
             let input = $(e.currentTarget);
             let isChecked = input.is(':checked') ? true : false;
@@ -279,5 +288,21 @@
             }
         });
         $('#tree').treed();
+    </script>
+    <script>
+        $('.catalog-list').on('click', function () {
+            document.getElementById('mobile-catalog').style.left = "0px";
+            $('.mobile-backdrop').show();
+        });
+
+        $('.mobile-backdrop').click(function () {
+           $('.mobile-backdrop').hide();
+            document.getElementById('mobile-catalog').style.left = "-300px";
+        });
+
+        $('.close-mobile-catalog').click(function () {
+            $('.mobile-backdrop').hide();
+            document.getElementById('mobile-catalog').style.left = "-300px";
+        });
     </script>
 @endpush

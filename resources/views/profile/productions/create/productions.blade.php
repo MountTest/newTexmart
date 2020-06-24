@@ -1,7 +1,7 @@
 <div class="container step_productions_1">
     <div class="row ">
-        <div class="col-12 mb-5 ">
-            <h2>Создание объявления производственного цеха</h2>
+        <div class="col-12 mb-lg-5 mb-2 ">
+            <h2 class="h3">Создание объявления производственного цеха</h2>
         </div>
         <div class="col-12 col-sm-10 col-lg-10 col-md-10">
             <form action="{{ route('profile.production.store') }}" enctype="multipart/form-data" method="POST">
@@ -13,7 +13,7 @@
                 @csrf
                 <input type="hidden" name="type" value="{{ $type }}">
                 <div class="form-row">
-                    <div class="form-group col-6">
+                    <div class="form-group col-lg-6 col-12">
                         <label>
                             Название товара <span class="text-danger">*</span>
                         </label>
@@ -25,7 +25,7 @@
                                         </span>
                         @enderror
                     </div>
-                    <div class="form-group col-6">
+                    <div class="form-group col-lg-6 col-12">
                         <label>
                             Бренд <span class="text-danger">*</span>
                         </label>
@@ -39,7 +39,7 @@
                     </div>
                 </div>
 
-                <h3>Укажите ваши контактные данные:</h3>
+                <h3 class="h4">Укажите ваши контактные данные:</h3>
                 <div class="form-row">
                     <div class="col-12 col-sm-12 col-md-4">
                         <div class="form-group">
@@ -56,7 +56,7 @@
                     </div>
                     <div class="col-12 col-sm-12 col-md-4">
                         <div class="form-group">
-                            <label for="phone2">Телефон #2</label>
+                            <label for="phone2">Телефон #2</label><br>
                             <input type="hidden" name="code2">
                             <input type="text" name="phone2"
                                    class="form-control phone2 @error('phone2') is-invalid @enderror">
@@ -188,7 +188,7 @@
                         @enderror
                     </div>
 
-                    <h3>Объем прозводства в месяц</h3>
+                    <h3 class="h4">Объем прозводства в месяц</h3>
                     <div class="form-row">
                         <div class="col-6">
                             <div class="form-group">
@@ -228,11 +228,16 @@
                     @enderror
                 </div>
 
-                <h3>Укажите свое местонахождение на карте</h3>
+                <h3 class="h4">Укажите свое местонахождение на карте</h3>
                 @include('partials.formFields.coordinates', ['idMap' => 'map3'])
-
-                <button type="submit" class="btn btn-green text-white">Подать</button>
-                <a href="{{ route('profile.production.index', ['type' => $type]) }}" class="btn">Назад</a>
+                <div class="row mb-lg-0 mb-5">
+                    <div class="col-lg col-12">
+                        <button type="submit" class="btn btn-texmart-orange text-white w-100">Подать</button>
+                    </div>
+                    <div class="col-lg col-12">
+                        <a href="{{ route('profile.production.index', ['type' => $type]) }}" class="btn w-100">Назад</a>
+                    </div>
+                    </div>
             </form>
         </div>
     </div>

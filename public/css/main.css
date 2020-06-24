@@ -17,7 +17,8 @@
     transform: translate(-50%, -50%);
 }
 #sync1 .owl-stage-outer {
-    max-height: 300px !important;
+    min-height: 300px !important;
+    max-width: 500px!important;
 }
 .bg-img-header {
     background: url("../img/main.png") no-repeat;

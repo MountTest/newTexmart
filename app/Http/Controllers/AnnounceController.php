@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Aloha\Twilio\Support\Laravel\Facade;
 use App\Announce;
+use App\AnnouncePhoto;
 use App\Category;
 use App\Notifications\UserCreated;
 use App\User;
@@ -12,7 +13,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\ImageManagerStatic;
 use Twilio\Exceptions\TwilioException;
 
 class AnnounceController extends Controller
@@ -70,10 +73,33 @@ class AnnounceController extends Controller
                 'email' => auth()->user()->email ? auth()->user()->email : ' ',
                 'user_id' => auth()->id(),
                 'locate' => $request->country,
-                'category_id' => $request->category
+                'category_id' => $request->category,
+                'price' => $request->price,
+                'currency' => $request->currency,
+                'date' => $request->date
             ]);
 
-            return redirect()->route('profile.announce.index');
+            $imagesArray = [];
+            if ($images = request('images')) {
+                foreach ($images as $image) {
+                    $fileName = 'announces/'.uniqid('announce_').'.jpg';
+                    $image = ImageManagerStatic::make($image)
+                        ->resize(1000, null, function ($constraint) {
+                            return $constraint->aspectRatio();
+                        })
+                        ->stream('jpg', 40);
+
+                    Storage::disk('local')->put('public/'.$fileName, $image);
+                    $imagesArray[] = $fileName;
+                    $pick = new AnnouncePhoto();
+                    $pick->path = $fileName;
+                    $pick->save();
+                    $announce->images()->attach($pick->id);
+                }
+            }
+
+//            return redirect()->route('profile.announce.index');
+        return redirect()->route('newprofile');
         }
         $data = $request->all();
         $data['phone'] = str_replace('+', '', $data['code']).preg_replace('/[-\s]/', '', $data['phone']);
@@ -228,8 +254,26 @@ class AnnounceController extends Controller
      * @param  \App\Announce  $announce
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Announce $announce)
+    public function destroy(Request $request)
     {
-        //
+        $announce = Announce::find($request->id);
+
+        if ($announce->images) {
+            foreach ($announce->images as $image)
+            {
+                $announce->images()->detach($image->id);
+                $image->delete();
+            }
+        }
+
+        if ($announce->like_users) {
+            $announce->like_users()->detach();
+        }
+
+        $announce->delete();
+
+        return response()->json([
+            'status' => 'success',
+        ]);
     }
 }

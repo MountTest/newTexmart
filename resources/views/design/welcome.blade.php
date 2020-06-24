@@ -85,7 +85,7 @@
                                 </div>
                                 <div class="card-body row justify-content-center" style="padding:20px 50px;">
                                     <div class="card-shake col-12 px-4">
-                                        <a href="#"
+                                        <a href="{{ route('announces.list') }}"
                                            class="texmart-bg-secondary row align-items-center rounded text-center text-dark d-flex align-items-center py-3 px-2 my-3">
                                             <div class="col-12 py-3">
                                                 <img src="{{ asset('images/2order.svg') }}" alt="">
@@ -117,8 +117,20 @@
                                 </div>
                                 <div class="card-body row no-gutters justify-content-around" style="padding:20px 24px;">
                                     <div class="card-shake col-12 col-md-12 col-lg-5">
-                                        <a href="#"
-                                           class="texmart-bg-secondary rounded text-center d-flex align-items-center text-dark py-3 px-2 my-3">
+                                        <a href="{{ isset(Auth::user()->id) ? route('profile.announce.create') : route('login') }}"
+                                           class="fade-link texmart-bg-secondary rounded text-center d-flex align-items-center text-dark py-3 px-2 my-3">
+                                            <div class="col-12 py-3">
+                                                {{--<i class="fas fa-exclamation-circle texmart-text-primary fa-2x"></i>--}}
+                                                <img src="{{ asset('images/2order2.svg') }}" alt="">
+                                                <h3 class="h4 font-weight-medium mt-2">Создать тендер</h3>
+                                                <p class="small m-0 line-height-120">Заполните форму и <br> находите
+                                                    подходящих <br> исполнителей</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-shake col-12 col-md-12 col-lg-5">
+                                        <a href="{{ route('new-design/catalog',['type' => 'productions']) }}"
+                                           class="texmart-bg-secondary rounded text-center d-flex align-items-center text-dark py-4 px-2 my-3">
                                             <div class="col-12 py-3">
                                                 {{--<i class="fas fa-user-friends texmart-text-primary fa-2x"></i>--}}
                                                 <img src="{{ asset('images/2delivery.svg') }}" alt="">
@@ -129,7 +141,7 @@
                                         </a>
                                     </div>
                                     <div class="card-shake col-12 col-md-12 col-lg-5">
-                                        <a href="#"
+                                        <a href="{{ route('new-design/catalog',['type' => 'product']) }}"
                                            class="texmart-bg-secondary rounded text-center d-flex align-items-center text-dark py-3 px-2 my-3">
                                             <div class="col-12 py-3">
                                                 <img src="{{ asset('images/2product.svg') }}" alt="">
@@ -141,7 +153,7 @@
                                         </a>
                                     </div>
                                     <div class="card-shake col-12 col-md-12 col-lg-5">
-                                        <a href="#"
+                                        <a href="{{ route('new-design/catalog',['type' => 'service']) }}"
                                            class="texmart-bg-secondary rounded text-center d-flex align-items-center text-dark py-3 px-2 my-3">
                                             <div class="col-12 py-3">
                                                 {{--<i class="fas fa-suitcase texmart-text-primary fa-2x"></i>--}}
@@ -152,18 +164,7 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="card-shake col-12 col-md-12 col-lg-5">
-                                        <a href="#"
-                                           class="texmart-bg-secondary rounded text-center d-flex align-items-center text-dark py-3 px-2 my-3">
-                                            <div class="col-12 py-3">
-                                                {{--<i class="fas fa-exclamation-circle texmart-text-primary fa-2x"></i>--}}
-                                                <img src="{{ asset('images/2order2.svg') }}" alt="">
-                                                <h3 class="h4 font-weight-medium mt-2">Создать тендер</h3>
-                                                <p class="small m-0 line-height-120">Заполните форму и <br> находите
-                                                    подходящих <br> исполнителей</p>
-                                            </div>
-                                        </a>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -269,7 +270,7 @@
             </div>
 
             <div class="text-center">
-                <a href="#" class="btn texmart-bg-primary rounded transition shadow-none text-white px-5" style="text-transform: none;">Больше новостей</a>
+                <a href="{{ route('news.list') }}" class="btn texmart-bg-primary rounded transition shadow-none text-white px-5 fade-link" style="text-transform: none;">Больше новостей</a>
             </div>
         </div>
     </section>
@@ -307,7 +308,7 @@
     </section>
 
     @include('design.partials.footer')
-        <div class="blob orange">
+        <div class="blob orange" data-toggle="modal" data-target="#modalContactForm">
             <div class="rounded-circle texmart-bg-primary border position-relative call-ico"
                  style="width: 70px; height: 70px; right: 0px; display:flex; align-items: center; justify-content: center;"><img src="{{asset('images/call.png')}}" alt="">
                 <div class="btn texmart-bg-primary rounded-pill d-none d-lg-block py-2 px-3 pr-5 text-white position-absolute call-ico-content">свяжитесь с нами</div>
@@ -320,6 +321,7 @@
                 {{--</div>--}}
             {{--</a>--}}
         </div>
+@include('blocks.buttons.button_request')
     {{--<div class="position-fixed" style="bottom: 10%; right: 5%; z-index: 999">--}}
         {{----}}
     {{--</div>--}}

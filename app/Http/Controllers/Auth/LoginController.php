@@ -87,7 +87,7 @@ class LoginController extends Controller
             auth()->login($newUser, true);
         }
 
-        return redirect()->route('homepage');
+        return redirect('/');
     }
 
     public function attemptLogin(Request $request)

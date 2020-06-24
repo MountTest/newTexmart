@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('design.layouts.app')
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/new.css') }}">
 @endpush
@@ -50,18 +50,18 @@
     @endif
 @endsection
 @section('content')
-    <section class="bg-texmart-sidebar fixed-top">
-        <div class="container">
-            @include('blocks.header')
-        </div>
-    </section>
+    {{--<section class="bg-texmart-sidebar fixed-top">--}}
+        {{--<div class="container">--}}
+            {{--@include('blocks.header')--}}
+        {{--</div>--}}
+    {{--</section>--}}
     <section class="mt-5 py-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-6">
                     <p class="h4 mb-3">
                         {{ $production->title }}
-{{--                        @include('partials.btn.favorite', ['route' => \Illuminate\Support\Facades\Auth::check() ? '' : route('login'), 'data' => 'data-id='.$production->id.''])--}}
+                        {{--                        @include('partials.btn.favorite', ['route' => \Illuminate\Support\Facades\Auth::check() ? '' : route('login'), 'data' => 'data-id='.$production->id.''])--}}
                     </p>
                     <div id="sync1" class="owl-carousel owl-theme">
                         <div class="item">
@@ -108,11 +108,11 @@
                             </div>
                         </div>
                         @if($production->brand)
-                        <div class="col-12 mb-4">
-                            <p class="font-size-14 font-weight-light">
-                                Брэнд: {{ $production->brand }}
-                            </p>
-                        </div>
+                            <div class="col-12 mb-4">
+                                <p class="font-size-14 font-weight-light">
+                                    Брэнд: {{ $production->brand }}
+                                </p>
+                            </div>
                         @endif
                         @if($production->price)
                             <div class="col-12 mb-4">
@@ -182,27 +182,38 @@
                                 </p>
                             </div>
                         @endif
-                    {{--@if(false)--}}
+                        <div class="p-lg-4 p-1 row justify-content-md-end justify-content-start">
+                            <div class="col-auto d-lg-flex align-items-center d-block">
+                                <p class="mb-lg-0 mb-3 mr-2">Поделиться:</p>
+                                                            <button class="social-icons ml-lg-2 ml-0 social-share-btn" data-url="{{ request()->url() }}" data-social="whatsapp"><i class="fab fa-whatsapp fa-lg"></i></button>
+                                <button class="social-icons ml-2 social-share-btn" data-url="{{ request()->url() }}" data-social="telegram"><i class="fab fa-telegram-plane fa-lg"></i></button>
+                                <button class="social-icons ml-2 social-share-btn" data-url="{{ request()->url() }}" data-social="facebook"><i class="fab fa-facebook-square fa-lg"></i></button>
+                                {{--<button class="social-icons ml-2 social-share-btn" data-url="{{ request()->url() }}" data-social="instagram"><i class="fab fa-instagram fa-lg"></i></button>--}}
+                                <button class="social-icons ml-2 social-share-btn" data-url="{{ request()->url() }}" data-social="vk"><i class="fab fa-vk fa-lg"></i></button>
+                            </div>
+                        </div>
+
+                        {{--@if(false)--}}
                         {{--<a class="border border-texmart rounded-pill bg-texmart-sidebar text-white py-2 px-2 ">--}}
-                            {{--Ветровки и толстовки--}}
+                        {{--Ветровки и толстовки--}}
                         {{--</a>--}}
-                    {{--@endif--}}
-                    {{--<ul class="list-inline">--}}
+                        {{--@endif--}}
+                        {{--<ul class="list-inline">--}}
                         {{--<li class="list-inline-item">--}}
-                            {{--<div class="my-3" id="rateYo"></div>--}}
+                        {{--<div class="my-3" id="rateYo"></div>--}}
                         {{--</li>--}}
                         {{--@if(count($production->feedbacks))--}}
-                            {{--<li class="list-inline-item">--}}
-                                {{--<a href="#reviews_show" class="text-dark text-dashed">--}}
-                                    {{--{{ count($production->feedbacks) }} отзывов--}}
-                                {{--</a>--}}
-                            {{--</li>--}}
+                        {{--<li class="list-inline-item">--}}
+                        {{--<a href="#reviews_show" class="text-dark text-dashed">--}}
+                        {{--{{ count($production->feedbacks) }} отзывов--}}
+                        {{--</a>--}}
+                        {{--</li>--}}
                         {{--@endif--}}
                         {{--<li class="list-inline-item">--}}
-                            {{--@include('partials.modals.comment')--}}
+                        {{--@include('partials.modals.comment')--}}
 
                         {{--</li>--}}
-                    {{--</ul>--}}
+                        {{--</ul>--}}
                     </div>
                     @if($production->description)
                         <div class="row mt-3">
@@ -220,84 +231,84 @@
                     @endif
                 </div>
                 {{--<div class="col-auto align-self-start">--}}
-                    {{--<div class="share_customer">--}}
-                        {{--<span class="span_share font-weight-bold">Поделиться:</span>--}}
-                        {{--<div class="social_buttons" style="padding: 4px">--}}
-                            {{--<a href="javascript:void(0)" title="vk" class="social-share-btn" data-url="{{ request()->url() }}" data-social="vk" data-text="{{ $production->title }}" style="width: 30px;height: 30px;">--}}
-                                {{--<i class="fab fa-vk mr-3 fa-lg nav-scale"></i>--}}
-                            {{--</a>--}}
-{{--                            <a href="javascript:void(0)" title="instagram" class="social-share-btn" data-url="{{ request()->url() }}" data-social="instagram" data-text="{{ $production->title }}" style="width: 30px;height: 30px;">--}}
-{{--                                <i class="fab fa-instagram mr-3 fa-lg nav-scale"></i>--}}
-{{--                            </a>--}}
-                            {{--<a href="javascript:void(0)" title="facebook" class="social-share-btn" data-url="{{ request()->url() }}" data-social="facebook" data-text="{{ $production->title }}" style="width: 30px;height: 30px;">--}}
-                                {{--<i class="fab fa-facebook mr-3 fa-lg nav-scale"></i>--}}
-                            {{--</a>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
+                {{--<div class="share_customer">--}}
+                {{--<span class="span_share font-weight-bold">Поделиться:</span>--}}
+                {{--<div class="social_buttons" style="padding: 4px">--}}
+                {{--<a href="javascript:void(0)" title="vk" class="social-share-btn" data-url="{{ request()->url() }}" data-social="vk" data-text="{{ $production->title }}" style="width: 30px;height: 30px;">--}}
+                {{--<i class="fab fa-vk mr-3 fa-lg nav-scale"></i>--}}
+                {{--</a>--}}
+                {{--                            <a href="javascript:void(0)" title="instagram" class="social-share-btn" data-url="{{ request()->url() }}" data-social="instagram" data-text="{{ $production->title }}" style="width: 30px;height: 30px;">--}}
+                {{--                                <i class="fab fa-instagram mr-3 fa-lg nav-scale"></i>--}}
+                {{--                            </a>--}}
+                {{--<a href="javascript:void(0)" title="facebook" class="social-share-btn" data-url="{{ request()->url() }}" data-social="facebook" data-text="{{ $production->title }}" style="width: 30px;height: 30px;">--}}
+                {{--<i class="fab fa-facebook mr-3 fa-lg nav-scale"></i>--}}
+                {{--</a>--}}
+                {{--</div>--}}
+                {{--</div>--}}
                 {{--</div>--}}
             </div>
 
 
 
             @if($others)
-                    <div class="row mt-4">
-                        <div class="col-12">
-                            <h3 class="h4">Похожие товары</h3>
-                        </div>
-                        @foreach($others as $other)
-                            <div class="col-lg-3 col-6">
-                                <a href="{{ route('productions.show', $other->slug) }}">
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <h3 class="h4">Похожие товары</h3>
+                    </div>
+                    @foreach($others as $other)
+                        <div class="col-lg-3 col-6">
+                            <a href="{{ route('productions.show', $other->slug) }}">
                                 <div>
-                                <div class="img" style="background-image:url({{$other->logo && file_exists('storage/'.str_replace('\\', '/', $other->logo)) ? asset('storage/'.str_replace('\\', '/', $other->logo)) : asset('img/2 lg.jpg')  }}); height:180px; background-size: cover; background-position: center;">
+                                    <div class="img" style="background-image:url({{$other->logo && file_exists('storage/'.str_replace('\\', '/', $other->logo)) ? asset('storage/'.str_replace('\\', '/', $other->logo)) : asset('img/2 lg.jpg')  }}); height:180px; background-size: cover; background-position: center;">
 
-                                </div>
+                                    </div>
                                     <div class="p-2">
                                         <p class="font-size-12 font-weight-bold text-orange">
                                             {{ $other->title }}
                                         </p>
                                     </div>
                                 </div>
-                                </a>
-                            </div>
-                        @endforeach
-                    </div>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
             @endif
 
             {{--@if(count($production->feedbacks))--}}
-                {{--<div class="row mt-5" id="reviews_show">--}}
-                    {{--<div class="col-12">--}}
-                        {{--<h2>Отзывы</h2>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--@php($less = false)--}}
-                {{--@foreach($production->feedbacks as $feedback)--}}
-                    {{--@if($loop->index > 2 && $less == false)--}}
-                        {{--<div id="show-more" class="" style="">--}}
-                            {{--<a href="#" class="show-more text-dark font-weight-bold">Показать больше</a>--}}
-                        {{--</div>--}}
-                        {{--@php($less = true)--}}
-                    {{--@endif--}}
-                    {{--<div class="row ty-compact-list">--}}
-                        {{--<div class="col-12 my-3">--}}
-                            {{--<div class="card shadow-sm">--}}
-                                {{--<div class="card-body">--}}
-                                    {{--@if($feedback->user)--}}
-                                        {{--@if($feedback->user->role_id == 1)--}}
-                                            {{--<p class="small text-muted">--}}
-                                                {{--<i class="fas fa-star text-warning"></i>--}}
-                                                {{--&nbsp;Проверено администрацией Texmart.kg--}}
-                                            {{--</p>--}}
-                                        {{--@endif--}}
-                                    {{--@endif--}}
-                                    {{--<div class="d-flex align-items-center">--}}
-                                        {{--<p class="m-0">{{ $feedback->feedback }}</p>--}}
-                                        {{--<div class="ml-auto" id="rateYo-{{ $feedback->id }}"></div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--@endforeach--}}
+            {{--<div class="row mt-5" id="reviews_show">--}}
+            {{--<div class="col-12">--}}
+            {{--<h2>Отзывы</h2>--}}
+            {{--</div>--}}
+            {{--</div>--}}
+            {{--@php($less = false)--}}
+            {{--@foreach($production->feedbacks as $feedback)--}}
+            {{--@if($loop->index > 2 && $less == false)--}}
+            {{--<div id="show-more" class="" style="">--}}
+            {{--<a href="#" class="show-more text-dark font-weight-bold">Показать больше</a>--}}
+            {{--</div>--}}
+            {{--@php($less = true)--}}
+            {{--@endif--}}
+            {{--<div class="row ty-compact-list">--}}
+            {{--<div class="col-12 my-3">--}}
+            {{--<div class="card shadow-sm">--}}
+            {{--<div class="card-body">--}}
+            {{--@if($feedback->user)--}}
+            {{--@if($feedback->user->role_id == 1)--}}
+            {{--<p class="small text-muted">--}}
+            {{--<i class="fas fa-star text-warning"></i>--}}
+            {{--&nbsp;Проверено администрацией Texmart.kg--}}
+            {{--</p>--}}
+            {{--@endif--}}
+            {{--@endif--}}
+            {{--<div class="d-flex align-items-center">--}}
+            {{--<p class="m-0">{{ $feedback->feedback }}</p>--}}
+            {{--<div class="ml-auto" id="rateYo-{{ $feedback->id }}"></div>--}}
+            {{--</div>--}}
+            {{--</div>--}}
+            {{--</div>--}}
+            {{--</div>--}}
+            {{--</div>--}}
+            {{--@endforeach--}}
 
             {{--@endif--}}
 
@@ -384,24 +395,32 @@
         });
     </script>
     <script>
-            $('.social-share-btn').click(e => {
-                let btn = $(e.currentTarget);
-                let social = btn.data('social');
-                let url = btn.data('url');
-                let text = btn.data('text');
+        $('.social-share-btn').click(e => {
+            let btn = $(e.currentTarget);
+            let social = btn.data('social');
+            let url = btn.data('url');
+            let text = btn.data('text');
 
-                if (social == 'facebook') {
-                    url = 'https://facebook.com/sharer/sharer.php?u=' + url;
-                    window.open(url, "popupWindow", "width=600,height=600,scrollbars=yes");
-                }
-                if (social == 'vk') {
-                    url = 'https://vk.com/share.php?url=' + url;
-                    window.open(url, "popupWindow", "width=600,height=600,scrollbars=yes");
-                }
-                // if (social == 'instagram') {
-                //     window.open($(this).attr("href", 'https://vk.com/share.php?url=' + url), "popupWindow", "width=600,height=600,scrollbars=yes");
-                // }
-            })
+            if (social == 'facebook') {
+                url = 'https://facebook.com/sharer/sharer.php?u=' + url;
+                window.open(url, "popupWindow", "width=600,height=600,scrollbars=yes");
+            }
+            if (social == 'vk') {
+                url = 'https://vk.com/share.php?url=' + url;
+                window.open(url, "popupWindow", "width=600,height=600,scrollbars=yes");
+            }
+            if (social == 'telegram') {
+                url = 'https://t.me/share/url?url='+ url;
+                window.open(url, "popupWindow", "width=600, height=600, scrollbars=yes");
+            }
+            if (social == 'whatsapp') {
+                url = 'https://wa.me/?text='+encodeURIComponent(window.location.href);
+                window.open(url, "popupWindow", "width=600, height=600, scrollbars=yes");
+            }
+            // if (social == 'instagram') {
+            //     window.open($(this).attr("href", 'https://vk.com/share.php?url=' + url), "popupWindow", "width=600,height=600,scrollbars=yes");
+            // }
+        })
     </script>
     @includeWhen(auth()->check(), 'partials.scripts.favorite_click')
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>

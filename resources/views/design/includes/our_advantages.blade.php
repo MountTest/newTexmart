@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="col-lg-6 col-md-8 col-12 order-0 order-md-1 mb-4 mb-md-0 mt-lg-0 mt-md-4">
-                <a class="fancybox-media" href="https://www.youtube.com/watch?time_continue=3&v=xTYkmWnwLvg">
+                <a  href="https://www.youtube.com/watch?time_continue=3&v=xTYkmWnwLvg">
                     <div class="position-relative ">
                         <img src="{{ asset('img/video.png') }}" data-src="{{ asset('img/video.png') }}" class="img-fluid div-lazy w-100 position-relative" alt="">
                         <img src="{{asset('img/youtube(2).png')}}" data-src="{{asset('img/youtube(2).png')}}" class="youtube div-lazy  position-absolute" style="left: 50%; top: 50%; transform: translate(-50%, -50%); " alt="">

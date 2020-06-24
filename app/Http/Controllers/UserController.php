@@ -6,6 +6,7 @@ use Aloha\Twilio\Support\Laravel\Facade;
 use App\Announce;
 use App\Category;
 use App\Http\Requests\UpdateUserPassword;
+use App\NewsSite;
 use App\Production;
 use App\Type;
 use App\User;
@@ -418,6 +419,11 @@ class UserController extends Controller
 //            return view('profile.settings', [
 //                'user' => $request->user(),
 //            ]);
+        }
+        else if ($type == 9) {
+            $view = view('profile.news.index', [
+                'news' => NewsSite::all(),
+            ])->render();
         }
 //        dd($view);
 

@@ -15,7 +15,7 @@ use App\Announce;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-Route::get('/new-design', function () {
+Route::get('/', function () {
     $announces = Announce::all()->reverse();
     $feedbacks = \App\Feedback::all()->reverse();
     return view('design.welcome', [
@@ -31,10 +31,18 @@ Route::get('/announce/filter', 'AnnounceController@new_filter')->name('announce/
 Route::post('/like_announce', 'AnnounceController@like')->name('like_announce');
 Route::post('/profile_switch', 'UserController@switch')->name('profile_switch');
 Route::get('/newprofile', 'UserController@newprofile')->name('newprofile');
+Route::post('/delete_announce', 'AnnounceController@destroy')->name('delete_announce');
+Route::get('/news.index', 'NewsSiteController@index')->name('news.index');
+Route::get('/news.create', 'NewsSiteController@create')->name('news.create');
+Route::post('/news.store', 'NewsSiteController@store')->name('news.store');
+Route::post('/news.delete', 'NewsSiteController@delete')->name('news.delete');
+Route::get('/news.edit/{id}', 'NewsSiteController@edit')->name('news.edit');
+Route::post('/news.update', 'NewsSiteController@update')->name('news.update');
+Route::get('/news.list', 'NewsSiteController@list')->name('news.list');
+Route::get('/news.show/{id}', 'NewsSiteController@show')->name('news.show');
 
 
-
-Route::get('/', 'MainController@index')->name('homepage');
+//Route::get('/', 'MainController@index')->name('homepage');
 Route::get('/image', function () {
     return view('image-resizer');
 });
@@ -64,6 +72,8 @@ Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
     Route::resource('blog', 'BlogController');
     Route::resource('announce', 'Admin\AnnounceController');
     Route::resource('user', 'Admin\UserController');
+
+
 });
 
 
@@ -77,6 +87,7 @@ Route::prefix('profile')->name('profile.')->middleware('auth')->group(function (
     Route::get('/user/favorites', 'UserController@favorites')->name('user.favorites');
     Route::resource('production', 'ProductionController');
     Route::resource('announce', 'AnnounceController');
+
 });
 Route::get('announce/ajax', 'AnnounceController@ajax')->name('announce.ajax');
 
