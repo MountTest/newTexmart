@@ -206,7 +206,7 @@
             var child = btn.data('child');
 
             $.ajax({
-                method: "GET",
+                method: "POST",
                 url: '{{ route('profile_switch') }}',
                 data: {
                     '_token': "{{ csrf_token() }}",

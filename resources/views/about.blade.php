@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('design.layouts.app')
 @section('content')
-    <section class="bg-texmart-sidebar fixed-top">
-        <div class="container">
-            @include('blocks.header')
-        </div>
-    </section>
-    <section class="bg-about mt-xl-5">
+    {{--<section class="bg-texmart-sidebar fixed-top">--}}
+        {{--<div class="container">--}}
+            {{--@include('blocks.header')--}}
+        {{--</div>--}}
+    {{--</section>--}}
+    <section class="bg-about">
         <div class="container h-100">
             <div class="row align-items-end h-100">
                 <div class="h1 text-white pb-5 text_for_info text-center">

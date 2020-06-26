@@ -29,7 +29,7 @@ Route::get('/new-design/announces/list', 'AnnounceController@list')->name('annou
 
 Route::get('/announce/filter', 'AnnounceController@new_filter')->name('announce/filter');
 Route::post('/like_announce', 'AnnounceController@like')->name('like_announce');
-Route::get('/profile_switch', 'UserController@switch')->name('profile_switch');
+Route::post('/profile_switch', 'UserController@switch')->name('profile_switch');
 Route::get('/newprofile', 'UserController@newprofile')->name('newprofile');
 Route::post('/delete_announce', 'AnnounceController@destroy')->name('delete_announce');
 Route::get('/news.index', 'NewsSiteController@index')->name('news.index');

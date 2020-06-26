@@ -36,7 +36,7 @@
                         портал по поиску и размещению заказов на производство <br> одежды в швейных фабриках и оптовых
                         покупок
                     </p>
-                    <a href="#" class="btn texmart-bg-primary rounded transition shadow-none px-5" style="text-transform: none;">Подробнее</a>
+                    <a href="{{ route('about') }}" class="btn texmart-bg-primary rounded transition shadow-none px-5 fade-link" style="text-transform: none;">Подробнее</a>
                 </div>
                 <div class="col-12 text-center pt-5">
                     <div class="row justify-content-center">
@@ -213,25 +213,27 @@
                     <h2 class="text-center texmart-text-primary h1">Новости</h2>
                 </div>
             </div>
+            @foreach(\App\NewsSite::all()->take(3) as $new)
+                @if($loop->index == 0)
             <div class="row">
                 <div class="col-12 div-lazy">
                     <div class="card shadow-sm mb-3 card-scale">
                         <div class="row no-gutters">
                             <div class="col-md-4 col-12 overflow-hidden">
-                                <img src="{{ asset('design/design.png') }}" class="card-img rounded-0 h-100" style="object-fit: cover;" alt="">
+                                <img src="{{ asset('storage/'.$new->preview) }}" class="card-img rounded-0 h-100" style="object-fit: cover;" alt="">
                             </div>
                             <div class="col-md-8 col-12 texmart-bg-primary px-0 px-md-5 text-white">
                                 <div class="card-body text-white position-relative h-100">
                                     <p class="card-text font-size-14 text-white">
-                                            {{ \Carbon\Carbon::today()->format('d.m.Y') }}
+                                            {{ \Carbon\Carbon::parse($new->created_at)->format('d.m.Y') }}
                                     </p>
                                     <h3 class="card-title pb-5 mb-3 d-block d-lg-none font-weight-normal"
                                         style="display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;">
-                                        Мы обновили <br> дизайн нашего сайта</h3>
+                                        {{$new->title}}</h3>
                                     <h3 class="card-title display-4 d-none d-lg-block font-weight-normal"
                                         style="display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;">
-                                        Мы обновили <br> дизайн нашего сайта</h3>
-                                    <a href="#">
+                                        {{$new->title}}</h3>
+                                    <a href="/news.show/{{$new->id}}">
                                     <p class="card-text w-100 position-absolute text-white font-size-18" style="bottom: 30px;">Читать больше >></p>
                                     </a>
                                 </div>
@@ -240,8 +242,24 @@
                     </div>
                 </div>
             </div>
+
             <div class="row row-cols-1 row-cols-md-2 mt-3">
-                <div class="col mb-4">
+                @elseif($loop->index == 1)
+                <div class="col-6 mb-4">
+                    <div class="card h-100 shadow-lg">
+                        <div class="card-body p-3 p-md-5">
+                            <h3 class="card-title line-height-140 texmart-text-primary font-weight-bold">{{ $new->title }}</h3>
+                            <div style="overflow:hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; /* number of lines to show */-webkit-box-orient: vertical;">
+                                <p class="card-text text-black">{!! $new->description !!}</p>
+                            </div>
+                            <a href="/news.show/{{$new->id}}">
+                                <p class="card-text mt-5 text-black">Читать больше >></p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @elseif($loop->index == 2)
+                <div class="col-6 mb-4">
                     <div class="card h-100 shadow-lg">
                         <div class="card-body p-3 p-md-5">
                             <h3 class="card-title line-height-140 texmart-text-primary font-weight-bold">Keys to writing copy that actually
@@ -254,20 +272,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col mb-4">
-                    <div class="card h-100 shadow-lg">
-                        <div class="card-body p-3 p-md-5">
-                            <h3 class="card-title line-height-140 texmart-text-primary font-weight-bold">Keys to writing copy that actually
-                                converts and sells users</h3>
-                            <p class="card-text text-black">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore...</p>
-                            <a href="#">
-                                <p class="card-text mt-5 text-black">Читать больше >></p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                @endif
             </div>
+            @endforeach
 
             <div class="text-center">
                 <a href="{{ route('news.list') }}" class="btn texmart-bg-primary rounded transition shadow-none text-white px-5 fade-link" style="text-transform: none;">Больше новостей</a>
@@ -289,7 +296,7 @@
 
 
     <section>
-        <div class="container">
+        <div class="container mt-5">
             <div class="row">
                 <div class="col-12">
                     <h2 class="text-center texmart-text-primary h1">Партнеры</h2>
