@@ -245,7 +245,7 @@
 
             <div class="row row-cols-1 row-cols-md-2 mt-3">
                 @elseif($loop->index == 1)
-                <div class="col-6 mb-4">
+                <div class="col-lg-6 col-12 mb-4">
                     <div class="card h-100 shadow-lg">
                         <div class="card-body p-3 p-md-5">
                             <h3 class="card-title line-height-140 texmart-text-primary font-weight-bold">{{ $new->title }}</h3>
@@ -259,7 +259,7 @@
                     </div>
                 </div>
                 @elseif($loop->index == 2)
-                <div class="col-6 mb-4">
+                <div class="col-lg-6 col-12 mb-4">
                     <div class="card h-100 shadow-lg">
                         <div class="card-body p-3 p-md-5">
                             <h3 class="card-title line-height-140 texmart-text-primary font-weight-bold">Keys to writing copy that actually
