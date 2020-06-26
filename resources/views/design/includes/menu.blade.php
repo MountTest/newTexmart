@@ -23,7 +23,7 @@
         @endauth
     </div>
     <div class="p-4" style="overflow-y: auto; height:70vh;">
-        <a href="#">
+        <a href="/">
         <div class="d-flex pb-3 border-bottom menu-option">
             <img class="img-fluid menu-img" src="{{ asset('images/menu/home.svg') }}" alt="">
             <p class="mb-0 menu-point ml-3">
@@ -71,7 +71,7 @@
             </p>
         </div>
         </a>
-        <a href="#">
+        <a href="{{ isset(Auth::user()->id) ? route('profile.announce.create') : route('login') }}">
         <div class="d-flex pt-3 menu-option">
             <img class="img-fluid menu-img" src="{{ asset('images/menu/create.svg') }}" alt="">
             <p class="mb-0 menu-point ml-3">
@@ -80,13 +80,13 @@
         </div>
         </a>
 
-        <a href="#">
-        <div class="d-flex py-3 border-bottom menu-option">
-            <img class="img-fluid menu-img" src="{{ asset('images/menu/add.svg') }}" alt="">
-            <p class="mb-0 menu-point ml-3">
-                Добавить компанию
-            </p>
-        </div>
-        </a>
+        {{--<a href="#">--}}
+        {{--<div class="d-flex py-3 border-bottom menu-option">--}}
+            {{--<img class="img-fluid menu-img" src="{{ asset('images/menu/add.svg') }}" alt="">--}}
+            {{--<p class="mb-0 menu-point ml-3">--}}
+                {{--Добавить компанию--}}
+            {{--</p>--}}
+        {{--</div>--}}
+        {{--</a>--}}
     </div>
 </div>
