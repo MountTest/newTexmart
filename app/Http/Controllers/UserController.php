@@ -347,7 +347,7 @@ class UserController extends Controller
             $view = view('profile.profile', [
                 'user' => $user,
                 'productions' => $productions,
-                'announces' => $announces->paginate(5),
+                'announces' => $announces,
             ])->render();
         }
         else if ($type == 2) {

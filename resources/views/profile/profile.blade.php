@@ -62,11 +62,11 @@
                         </div>
                     @endforeach
 
-                    @if($announces instanceof \Illuminate\Pagination\LengthAwarePaginator)
-                        <div class="row pl-4 ml-0 pt-3">
-                            {{ $announces->appends(request()->query())->links() }}
-                        </div>
-                    @endif
+                    {{--@if($announces instanceof \Illuminate\Pagination\LengthAwarePaginator)--}}
+                        {{--<div class="row pl-4 ml-0 pt-3">--}}
+                            {{--{{ $announces->appends(request()->query())->links() }}--}}
+                        {{--</div>--}}
+                    {{--@endif--}}
                 </section>
         @endif
 {{--@endsection--}}

@@ -275,17 +275,17 @@
         </div>
     </section>
 
-    <section>
-        <div class="container py-5">
-            <div class="row mb-4">
-                <h2 class="text-center col-12 h1 texmart-text-primary">Полезные статьи</h2>
-            </div>
-                    @include('design.posts.list', ['count' => 3, 'rowCols' => 3])
-            <div class="text-center">
-                <a href="#" class="btn texmart-bg-primary rounded transition shadow-none text-white px-5" style="text-transform: none;">Больше статей</a>
-            </div>
-        </div>
-    </section>
+    {{--<section>--}}
+        {{--<div class="container py-5">--}}
+            {{--<div class="row mb-4">--}}
+                {{--<h2 class="text-center col-12 h1 texmart-text-primary">Полезные статьи</h2>--}}
+            {{--</div>--}}
+                    {{--@include('design.posts.list', ['count' => 3, 'rowCols' => 3])--}}
+            {{--<div class="text-center">--}}
+                {{--<a href="#" class="btn texmart-bg-primary rounded transition shadow-none text-white px-5" style="text-transform: none;">Больше статей</a>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</section>--}}
 
 
     <section>

@@ -2,7 +2,7 @@ body {
     -moz-user-select: none; -khtml-user-select: none; user-select: none;
 }
 .texmart-text-primary {
-    color: #CD882D !important;
+    color: #e99b33 !important;
 }
 
 .texmart-text-secondary {
@@ -14,7 +14,7 @@ body {
 }
 
 .texmart-bg-primary {
-    background: #CD882D !important;
+    background: #e99b33 !important;
 }
 
 .texmart-bg-secondary {
@@ -22,7 +22,7 @@ body {
 }
 
 .texmart-border-primary {
-    border-color: #CD882D !important;
+    border-color: #e99b33 !important;
 }
 
 .texmart-border-secondary {
