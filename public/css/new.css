@@ -822,6 +822,7 @@ body {
 }
 
 .country-list {
+    left:0%;
     height: 250px;
     overflow-y: auto;
     width:400px;

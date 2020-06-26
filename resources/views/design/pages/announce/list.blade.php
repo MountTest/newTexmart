@@ -268,7 +268,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-8 col-md-8 col-12 d-flex align-items-center justify-content-center pb-2 mt-lg-0 mt-md-0 mt-3">
+                    <div class="col-lg-8 col-md-8 col-12 d-lg-flex d-none align-items-center justify-content-center pb-2 mt-lg-0 mt-md-0 mt-3">
                         <a href="" class="link-style">Создать заявку</a>
                         <div class="mx-2 h-100 bg-dark" style="width:1.5px;"></div>
                         <a href="" class="link-style">Добавить компанию</a>
