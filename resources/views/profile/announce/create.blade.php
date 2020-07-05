@@ -291,7 +291,7 @@
                         </div>
 
                         <div class="form-group col-lg-6 col-12">
-                            <label for="date">Выберите срок объявления</label>
+                            <label for="date">Выберите срок объявления, до...</label>
                             <div class="input-group">
                                 <input type="date" name="date" id="date" class="form-control" placeholder="Выберите дату..." required>
                             </div>

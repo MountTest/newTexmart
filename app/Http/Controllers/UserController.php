@@ -431,4 +431,16 @@ class UserController extends Controller
             'view' => $view,
         ]);
     }
+
+    public function phone_check(Request $request) {
+
+        $phone = str_replace('+', '', $request->code).preg_replace('/[-\s]/', '', $request->phone);
+        $user = User::where('phone',$phone)->first();
+        $check = $user ? true : false;
+
+
+        return response()->json([
+           'check' => $check,
+        ]);
+    }
 }

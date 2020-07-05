@@ -415,7 +415,7 @@
 
         $("#phone-number").intlTelInput({
             initialCountry: "kg",
-            preferredCountries: ["ru", "kg", "kz"],
+            preferredCountries: ["ru", "kg", "kz", "uz"],
             separateDialCode: true,
             excludeCountries: ["xk"],
             geoIpLookup: function (callback) {

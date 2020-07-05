@@ -29,6 +29,7 @@ Route::get('/new-design/announces/list', 'AnnounceController@list')->name('annou
 
 Route::get('/announce/filter', 'AnnounceController@new_filter')->name('announce/filter');
 Route::post('/like_announce', 'AnnounceController@like')->name('like_announce');
+Route::post('/phone_check', 'UserController@phone_check')->name('phone_check');
 Route::post('/profile_switch', 'UserController@switch')->name('profile_switch');
 Route::get('/newprofile', 'UserController@newprofile')->name('newprofile');
 Route::post('/delete_announce', 'AnnounceController@destroy')->name('delete_announce');

@@ -178,17 +178,17 @@
     <section>
         <div class="container py-5">
             <div class="row justify-content-center">
-                <div class="col-12 col-sm-6 mb-sm-3 mb-md-0 col-md-3 col-lg-3 text-center numbers">
-                    <p class="display-2 mb-0 line-height-90 font-weight-bold texmart-text-primary value">25</p>
-                    <p class="font-weight-medium">какие-то данные</p>
+                <div class="col-12 col-sm-6 mb-sm-3 mb-md-0 col-md-3 col-lg-4 text-center numbers">
+                    <p class="display-2 mb-0 line-height-90 font-weight-bold texmart-text-primary value">300</p>
+                    <p class="font-weight-medium">производителей</p>
                 </div>
-                <div class="col-12 col-sm-6 mb-sm-3 mb-md-0 col-md-3 col-lg-3 text-center numbers">
-                    <p class="display-2 mb-0 line-height-90 font-weight-bold texmart-text-primary value">25</p>
-                    <p class="font-weight-medium">какие-то данные</p>
+                <div class="col-12 col-sm-6 mb-sm-3 mb-md-0 col-md-3 col-lg-4 text-center numbers">
+                    <p class="display-2 mb-0 line-height-90 font-weight-bold texmart-text-primary value">100</p>
+                    <p class="font-weight-medium">тендеров и заявок в месяц</p>
                 </div>
-                <div class="col-12 col-sm-6 mb-sm-3 mb-md-0 col-md-3 col-lg-3 text-center numbers">
-                    <p class="display-2 mb-0 line-height-90 font-weight-bold texmart-text-primary value">25</p>
-                    <p class="font-weight-medium">какие-то данные</p>
+                <div class="col-12 col-sm-6 mb-sm-3 mb-md-0 col-md-3 col-lg-4 text-center numbers">
+                    <p class="display-2 mb-0 line-height-90 font-weight-bold texmart-text-primary"><span class="value">225</span><span class="display-2 mb-0 line-height-90 font-weight-bold texmart-text-primary">т</span></p>
+                    <p class="font-weight-medium">единиц одежды экспорта с Кыргызстана в день</p>
                 </div>
             </div>
         </div>

@@ -101,8 +101,9 @@ class AnnounceController extends Controller
 //            return redirect()->route('profile.announce.index');
         return redirect()->route('newprofile');
         }
+//        dd($request->all());
         $data = $request->all();
-        $data['phone'] = str_replace('+', '', $data['code']).preg_replace('/[-\s]/', '', $data['phone']);
+        $data['user_phone'] = str_replace('+', '', $data['code']).preg_replace('/[-\s]/', '', $data['user_phone']);
         $validated = Validator::make($data, [
             'name' => 'string',
             'phone' => 'unique:users',
@@ -112,31 +113,34 @@ class AnnounceController extends Controller
             return redirect()->back()->withErrors($validated);
         }
         $pass = rand(11111111, 99999999);
-        $verification = rand(111111, 999999);
+//        $verification = rand(111111, 999999);
         $user = User::create([
             'role_id' => 4,
-            'phone' => $data['phone'],
-            'email' => $data['email'],
-            'name' => $data['name'],
+            'phone' => $data['user_phone'],
+//            'email' => $data['email'],
+            'name' => $data['user_name'],
             'password' => Hash::make($pass),
-            'phone_verification' => $verification,
+//            'phone_verification' => $verification,
         ]);
 
         $announce = Announce::create([
-            'name' => $data['name'],
-            'content' => $data['bid'],
-            'phone' => $data['phone'],
+            'name' => $data['user_name'],
+            'content' => $data['announce_description'],
+            'phone' => $data['user_phone'],
             'code' => $data['code'],
-            'email' => $data['email'],
+            'price' => $data['price'],
+            'date' => $data['date'],
+            'currency' => $data['currency'],
+//            'email' => $data['email'],
             'user_id' => $user->id,
         ]);
 
         try {
-            Facade::message('+'.$data['phone'], "Ваш активационный код для сайта ".url('/').": ".$user->phone_verification."\n Ваш пароль: $pass". "\n Ваш логин: ".$data['phone']);
+            Facade::message('+'.$data['user_phone'], "Ваши данные для авторизации в ".url('/').": \n Ваш пароль: $pass". "\n Ваш логин: ".$data['user_phone']);
         } catch (TwilioException $exception) {
             Log::alert($exception->getMessage());
         }
-        $user->notify(new UserCreated($pass, $verification, $data['phone']));
+//        $user->notify(new UserCreated($pass, $data['phone']));
 
         Session::flash('status', ['status' => 'success', 'message' => 'Мы создали для вас аккаунт! Вам отправлено письмо с данными на вашу электронную почту']);
 

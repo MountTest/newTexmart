@@ -12,7 +12,10 @@
     <link rel="stylesheet" href="{{ asset('css/main.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/new.css') }}">
     <link rel="stylesheet" href="{{asset('css/slick.min.css')}}"/>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-material-datetimepicker.css') }}" />
     <link  rel="stylesheet"  href = "{{asset("css/intlTelInput.min.css")}}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <link rel="stylesheet" href="{{asset('css/slick.min.css')}}?v={{ filemtime(public_path('css/slick.min.css')) }}"/>
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}?v={{ filemtime(public_path('css/owl.carousel.min.css')) }}">
     <link rel="stylesheet" href="{{ asset('css/jquery.rateyo.min.css') }}?v={{ filemtime(public_path('css/jquery.rateyo.min.css')) }}">
@@ -34,11 +37,22 @@
     <script src="{{asset('js/slick.min.js')}}?v={{ filemtime(public_path('css/main.min.css')) }}"></script>
     <script src="{{ asset('js/owl.carousel.min.js') }}?v={{ filemtime(public_path('css/main.min.css')) }}"></script>
     {{--connect rateyo.js--}}
+    <script type="text/javascript" src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap-material-datetimepicker.js') }}"></script>
     <script src="{{ asset('js/intlTelInput-jquery.min.js') }}"></script>
     <script src="{{ asset('js/jquery.rateyo.js') }}?v={{ filemtime(public_path('css/main.min.css')) }}"></script>
 {{--<script src="{{ asset('js/intlTelInput-jquery.min.js') }}"></script>--}}
     <script>
         $('.div-lazy').lazy();
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.date').bootstrapMaterialDatePicker
+            ({
+                time: false,
+                clearButton: true
+            });
+        });
     </script>
     {{--@if (Auth::check())--}}
         {{--<script>--}}

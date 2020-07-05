@@ -1,9 +1,22 @@
 @extends('design.layouts.app')
 @section('content')
-
+    <div class="mobile-backdrop"></div>
+    <div class="mobile-catalog py-5 px-3" id="mobile-catalog">
+        <i class="fas fa-times position-absolute fa-lg close-mobile-catalog" style="top:2%; right:10%;"></i>
+        <div style="position: sticky; top:15%;">
+            <button class="btn-accordion btn-link mb-1 text-left active" type="button" data-type="switch" data-id="all">
+                <span class="h6">Все категории</span>
+            </button>
+            @foreach($categories as $category)
+                <button class="btn-accordion btn-link mb-1 text-left" type="button" data-type="switch" data-id="{{ $category->id }}">
+                    <span class="h6">{{ $category->title }}</span>
+                </button>
+            @endforeach
+        </div>
+    </div>
     <div class="container mt-5 pt-5">
         <div class="row">
-            <div class="col-lg-3 col-12 position-relative">
+            <div class="col-lg-3 col-12 position-relative d-lg-block d-none">
                 <div style="position: sticky; top:15%;">
                 <button class="btn-accordion btn-link mb-1 text-left active" type="button" data-type="switch" data-id="all">
                     <span class="h6">Все категории</span>
@@ -18,7 +31,8 @@
             <div class="col-lg-9 col-12 mt-lg-0 mt-md-0 mt-4">
                 <h2 class="texmart-text-primary h1 mb-3" data-parent="title">База заявок от заказчиков</h2>
                 <div class="row mb-3">
-                    <div class="col-lg-4 col-12">
+                    <div class="col-lg-4 col-6">
+
                         <div class="country-filter position-relative">
                             <span class="country-title">Все страны</span><i class="fas fa-chevron-down ml-1 fa-sm"></i>
                             <input type="hidden" class="country-value">
@@ -268,6 +282,7 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-6 d-lg-none d-block d-flex justify-content-end"><i class="fas fa-bars fa-2x catalog-list"></i></div>
                     <div class="col-lg-8 col-md-8 col-12 d-lg-flex d-none align-items-center justify-content-center pb-2 mt-lg-0 mt-md-0 mt-3">
                         <a href="" class="link-style">Создать заявку</a>
                         <div class="mx-2 h-100 bg-dark" style="width:1.5px;"></div>
@@ -571,5 +586,21 @@
             });
 
         })
+    </script>
+    <script>
+        $('.catalog-list').on('click', function () {
+            document.getElementById('mobile-catalog').style.left = "0px";
+            $('.mobile-backdrop').show();
+        });
+
+        $('.mobile-backdrop').click(function () {
+            $('.mobile-backdrop').hide();
+            document.getElementById('mobile-catalog').style.left = "-300px";
+        });
+
+        $('.close-mobile-catalog').click(function () {
+            $('.mobile-backdrop').hide();
+            document.getElementById('mobile-catalog').style.left = "-300px";
+        });
     </script>
 @endpush

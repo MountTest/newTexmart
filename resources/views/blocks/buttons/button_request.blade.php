@@ -18,7 +18,7 @@
                     <div class="md-form mb-5 d-flex justify-content-start">
                         <input type="hidden" name="code">
                         <input type="text"
-                               class="form-control rounded-pill w-75 shadow-sm @error('phone') is-invalid @enderror"
+                               class="form-control rounded-pill w-75 @error('phone') is-invalid @enderror" style="padding-left:91px!important;"
                                name="phone" required autocomplete="phone"
                                id="phone-number_2">
                     </div>
@@ -39,7 +39,7 @@
     <script>
         $("#phone-number_2").intlTelInput({
             initialCountry: "kg",
-            preferredCountries: ["ru", "kg", "kz"],
+            preferredCountries: ["ru", "kg", "kz", "uz", "by"],
             separateDialCode: true,
             excludeCountries: ["xk"],
             geoIpLookup: function (callback) {

@@ -18,10 +18,10 @@
                         Покупателю
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="{{ isset(Auth::user()->id) ? route('profile.announce.create') : route('login') }}">Создать тендер</a>
+                        <a class="dropdown-item" href="{{ route('new-design/catalog',['type' => 'productions']) }}">Поставщики</a>
+                        <a class="dropdown-item" href="{{ route('new-design/catalog',['type' => 'product']) }}">Товары</a>
+                        <a class="dropdown-item" href="{{ route('new-design/catalog',['type' => 'service']) }}">Услуги</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -30,10 +30,8 @@
                         Поставщику
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="{{ route('announces.list') }}">Заказы</a>
+                        <a class="dropdown-item" href="#">Добавить компанию</a>
                     </div>
                 </li>
             </ul>
