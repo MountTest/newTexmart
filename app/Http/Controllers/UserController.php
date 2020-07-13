@@ -437,7 +437,19 @@ class UserController extends Controller
         $phone = str_replace('+', '', $request->code).preg_replace('/[-\s]/', '', $request->phone);
         $user = User::where('phone',$phone)->first();
         $check = $user ? true : false;
+        $length = 0;
 
+        if ($request->code == '+996' || $request->code == '+998' || $request->code == '+375')
+        {
+            $length = strlen(preg_replace('/[-\s]/', '', $request->phone)) == 9 ? true : false;
+        }
+        if ($request->code == '+7')
+        {
+            $length = strlen(preg_replace('/[-\s]/', '', $request->phone)->phone) == 10 ? true : false;
+        }
+
+        $check = ($length == true ? false : true);
+//        dd(strlen($request->phone));
 
         return response()->json([
            'check' => $check,

@@ -14,6 +14,8 @@
 use App\Announce;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+//axios
+
 
 Route::get('/', function () {
     $announces = Announce::all()->reverse();
@@ -54,27 +56,41 @@ Route::post('/image/resize', 'MainController@imageResize')->name('image.resize')
 
 Route::get('/admin', 'AdminController@admin')->name('admin.admin');
 
-Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
-    /**
-     * Production routes
-     */
-    Route::get('/user/datatable', 'Admin\UserController@datatable')->name('user.datatable');
-    Route::get('/production/datatable', 'Admin\ProductionController@datatable')->name('production.datatable');
-    Route::get('/announce/datatable', 'Admin\AnnounceController@datatable')->name('announce.datatable');
-    Route::resource('production', 'Admin\ProductionController');
+//Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
+//    /**
+//     * Production routes
+//     */
+//    Route::get('/user/datatable', 'Admin\UserController@datatable')->name('user.datatable');
+//    Route::get('/production/datatable', 'Admin\ProductionController@datatable')->name('production.datatable');
+//    Route::get('/announce/datatable', 'Admin\AnnounceController@datatable')->name('announce.datatable');
+//    Route::resource('production', 'Admin\ProductionController');
+//
+//    Route::get('/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
+//
+//    Route::get('/message', 'HomeController@message')->name('message');
+//
+//    Route::get('/favorite', 'FavoriteController@index')->name('favorite');
+//
+//    Route::get('/blog/datatable', 'BlogController@datatableData')->name('blog.datatable.data');
+//    Route::resource('blog', 'BlogController');
+//    Route::resource('announce', 'Admin\AnnounceController');
+//    Route::resource('user', 'Admin\UserController');
+//});
 
+Route::prefix('/admin')->name('admin.')->middleware('admin')->group(function (){
     Route::get('/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
+    Route::get('/getusers/{check}', 'AdminController@getUsers')->name('getusers');
+    Route::get('/search_user/{value}', 'AdminController@searchUsers')->name('search_user');
+    Route::post('/update_user', 'AdminController@updateUser')->name('update_user');
 
-    Route::get('/message', 'HomeController@message')->name('message');
+    Route::get('/getproducts/{id}', 'AdminController@getProducts')->name('getproducts');
+    Route::get('/search_product/{value}/{id}', 'AdminController@searchProducts')->name('search_product');
+    Route::post('/update_product/{id}', 'AdminController@updateProduct')->name('update_product');
 
-    Route::get('/favorite', 'FavoriteController@index')->name('favorite');
-
-    Route::get('/blog/datatable', 'BlogController@datatableData')->name('blog.datatable.data');
-    Route::resource('blog', 'BlogController');
-    Route::resource('announce', 'Admin\AnnounceController');
-    Route::resource('user', 'Admin\UserController');
-
-
+    Route::get('/getnews', 'AdminController@getNews')->name('getnews');
+    Route::get('/get_new_edit/{id}', 'AdminController@getNewEdit')->name('get_new_edit');
+    Route::get('/search_news/{value}', 'AdminController@searchNews')->name('search_news');
+    Route::post('/store_new', 'AdminController@storeNews')->name('store_new');
 });
 
 

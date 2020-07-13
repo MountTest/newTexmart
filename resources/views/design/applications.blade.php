@@ -56,6 +56,7 @@
                     <label for="name" class="texmart-text-grey">Введите ФИО <span class="text-danger">*</span></label>
                     <input name="user_name" class="form-control step1-name" id="name"/>
                     <p class="mb-0 text-danger font-size-12 py-1" style="display: none;">Заполните поле</p>
+                    <div class="mb-0 text-danger font-size-12 py-1" id="email_check" style="display: none;">Такой Email занят</div>
                 </div>
                     <div class="form-group">
                         <label for="phone-number" class="d-block texmart-text-grey"> {{ __('Ваш телефонный номер:') }} <span class="text-danger">*</span>
@@ -71,7 +72,7 @@
                                     </span>
                         @enderror
                         <p class="mb-0 text-danger font-size-12 py-1" style="display: none;">Заполните поле</p>
-                        <div class="mb-0 text-danger font-size-12 py-1" id="phone_check" style="display: none;">Такой номер занят</div>
+                        <div class="mb-0 text-danger font-size-12 py-1" id="phone_check" style="display: none;">Номер некорректный, либо занят</div>
                     </div>
                 <div class="form-group text-center">
                     <div class="btn text-white px-5 py-2 texmart-border-radius texmart-bg-primary" id="slide-step-1">Далее</div>
@@ -509,6 +510,7 @@
                 }
             })
         })
+
     </script>
     <script>
         $(document).ready(function () {

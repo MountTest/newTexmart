@@ -6,8 +6,20 @@
 
 require('./bootstrap');
 
-// window.Vue = require('vue');
+window.Vue = require('vue');
+window.Vuex = require('vuex');
 
+Vue.use(require('vuex'));
+import Vue from "vue";
+import VueSimpleAlert from "vue-simple-alert";
+
+Vue.use(VueSimpleAlert);
+const store = new Vuex.Store({
+    state: {
+        type: 1,
+        news: null
+    },
+});
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -19,7 +31,14 @@ require('./bootstrap');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('admin-panel-component', require('./components/AdminPanelComponent.vue').default);
+Vue.component('user-index-component', require('./components/UserIndexComponent.vue').default);
+Vue.component('product-index-component', require('./components/ProductIndexComponent.vue').default);
+Vue.component('service-index-component', require('./components/ServiceIndexComponent.vue').default);
+Vue.component('production-index-component', require('./components/ProductionIndexComponent.vue').default);
+Vue.component('news-index-component', require('./components/NewsIndexComponent.vue').default);
+Vue.component('news-create-component', require('./components/NewsCreateComponent.vue').default);
 //
 // const Example = require('./components/ExampleComponent');
 
@@ -29,10 +48,8 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-// const app = new Vue({
-//     el: '#app',
-//     components: {
-//         Example
-//     }
-// });
+const app = new Vue({
+    el: '#app',
+    store: store
+});
 

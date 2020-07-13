@@ -131,7 +131,9 @@ class AnnounceController extends Controller
             'price' => $data['price'],
             'date' => $data['date'],
             'currency' => $data['currency'],
-//            'email' => $data['email'],
+            'locate' => $data['country'],
+            'category_id' => $data['category'],
+            'email' => $data['email'],
             'user_id' => $user->id,
         ]);
 
