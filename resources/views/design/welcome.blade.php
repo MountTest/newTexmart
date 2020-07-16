@@ -213,27 +213,30 @@
                     <h2 class="text-center texmart-text-primary h1">Новости</h2>
                 </div>
             </div>
-            @foreach(\App\NewsSite::all()->take(3) as $new)
-                @if($loop->index == 0)
+            <?php
+                $news = \App\NewsSite::all()->take(3);
+            ?>
+                @if(isset($news[0]))
             <div class="row">
                 <div class="col-12 div-lazy">
                     <div class="card shadow-sm mb-3 card-scale">
                         <div class="row no-gutters">
                             <div class="col-md-4 col-12 overflow-hidden">
-                                <img src="{{ asset('storage/'.$new->preview) }}" class="card-img rounded-0 h-100" style="object-fit: cover;" alt="">
+                                {{--@dd($n)0--}}
+                                <img src="{{ asset('storage/'.$news[0]->preview) }}" class="card-img rounded-0 h-100" style="object-fit: cover;" alt="">
                             </div>
                             <div class="col-md-8 col-12 texmart-bg-primary px-0 px-md-5 text-white">
                                 <div class="card-body text-white position-relative h-100">
                                     <p class="card-text font-size-14 text-white">
-                                            {{ \Carbon\Carbon::parse($new->created_at)->format('d.m.Y') }}
+                                            {{ \Carbon\Carbon::parse($news[0]->created_at)->format('d.m.Y') }}
                                     </p>
                                     <h3 class="card-title pb-5 mb-3 d-block d-lg-none font-weight-normal"
                                         style="display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;">
-                                        {{$new->title}}</h3>
+                                        {{$news[0]->title}}</h3>
                                     <h3 class="card-title display-4 d-none d-lg-block font-weight-normal"
                                         style="display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;">
-                                        {{$new->title}}</h3>
-                                    <a href="/news.show/{{$new->id}}">
+                                        {{$news[0]->title}}</h3>
+                                    <a href="/news.show/{{$news[0]->id}}">
                                     <p class="card-text w-100 position-absolute text-white font-size-18" style="bottom: 30px;">Читать больше >></p>
                                     </a>
                                 </div>
@@ -242,31 +245,33 @@
                     </div>
                 </div>
             </div>
+                @endif
 
-            <div class="row row-cols-1 row-cols-md-2 mt-3">
-                @elseif($loop->index == 1)
+            <div class="row mt-3">
+                @if(isset($news[1]))
                 <div class="col-lg-6 col-12 mb-4">
                     <div class="card h-100 shadow-lg">
                         <div class="card-body p-3 p-md-5">
-                            <h3 class="card-title line-height-140 texmart-text-primary font-weight-bold">{{ $new->title }}</h3>
+                            <h3 class="card-title line-height-140 texmart-text-primary font-weight-bold">{{ $news[1]->title }}</h3>
                             <div style="overflow:hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; /* number of lines to show */-webkit-box-orient: vertical;">
-                                <p class="card-text text-black">{!! $new->description !!}</p>
+                                <p class="card-text text-black">{!! $news[1]->description !!}</p>
                             </div>
-                            <a href="/news.show/{{$new->id}}">
+                            <a href="/news.show/{{$news[1]->id}}">
                                 <p class="card-text mt-5 text-black">Читать больше >></p>
                             </a>
                         </div>
                     </div>
                 </div>
-                @elseif($loop->index == 2)
+                @endif
+                @if(isset($news[2]))
                 <div class="col-lg-6 col-12 mb-4">
                     <div class="card h-100 shadow-lg">
                         <div class="card-body p-3 p-md-5">
-                            <h3 class="card-title line-height-140 texmart-text-primary font-weight-bold">Keys to writing copy that actually
-                                converts and sells users</h3>
-                            <p class="card-text text-black">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore...</p>
-                            <a href="#">
+                            <h3 class="card-title line-height-140 texmart-text-primary font-weight-bold">{{ $news[2]->title }}</h3>
+                            <div style="overflow:hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; /* number of lines to show */-webkit-box-orient: vertical;">
+                                <p class="card-text text-black">{!! $news[2]->description !!}</p>
+                            </div>
+                            <a href="/news.show/{{$news[2]->id}}">
                                 <p class="card-text mt-5 text-black">Читать больше >></p>
                             </a>
                         </div>
@@ -274,7 +279,6 @@
                 </div>
                 @endif
             </div>
-            @endforeach
 
             <div class="text-center">
                 <a href="{{ route('news.list') }}" class="btn texmart-bg-primary rounded transition shadow-none text-white px-5 fade-link" style="text-transform: none;">Больше новостей</a>

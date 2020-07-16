@@ -92,7 +92,7 @@ Route::prefix('/admin')->name('admin.')->middleware('admin')->group(function (){
     Route::get('/search_news/{value}', 'AdminController@searchNews')->name('search_news');
     Route::post('/store_new', 'AdminController@storeNews')->name('store_new');
 });
-
+    Route::get('/delete_news/{id}', 'AdminController@deleteNews')->name('delete_news');
 
 
 Route::get('/profile', 'UserController@index')->name('profile');

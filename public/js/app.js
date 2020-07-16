@@ -796,6 +796,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   // name: "UserIndexComponent",
   data: function data() {
@@ -832,6 +833,23 @@ __webpack_require__.r(__webpack_exports__);
     editchange: function editchange(id) {
       this.$store.state.type = 2;
       this.$store.state.news = id;
+    },
+    deletenews: function deletenews(id) {
+      var _this3 = this;
+
+      console.log(id);
+      axios.get('/delete_news/' + id).then(function (response) {
+        _this3.news = response.data;
+
+        _this3.$fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Новость удалена',
+          showConfirmButton: false,
+          backdrop: false,
+          timer: 1500
+        });
+      });
     }
   }
 });
@@ -41204,6 +41222,17 @@ var render = function() {
                     on: {
                       click: function($event) {
                         return _vm.editchange(new_one.id)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-center ml-2" }, [
+                  _c("i", {
+                    staticClass: "fas fa-trash fa-lg user-delete",
+                    on: {
+                      click: function($event) {
+                        return _vm.deletenews(new_one.id)
                       }
                     }
                   })

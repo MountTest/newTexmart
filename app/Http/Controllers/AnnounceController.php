@@ -8,6 +8,7 @@ use App\AnnouncePhoto;
 use App\Category;
 use App\Notifications\UserCreated;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -28,13 +29,13 @@ class AnnounceController extends Controller
     public function index()
     {
         return view('profile.announce.index', [
-            'announces' => auth()->user()->announces,
+            'announces' => auth()->user()->announces->where('date','>',Carbon::today()),
         ]);
     }
 
     public function ajax(Request $request)
     {
-        $announces = Announce::all()->reverse();
+        $announces = Announce::where('date','>',Carbon::today())->get()->reverse();
         return response()->json([
             'html' => view('announce.list', [
                 'announces' => $announces,

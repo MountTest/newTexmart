@@ -10,6 +10,7 @@ use App\NewsSite;
 use App\Production;
 use App\Type;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -335,7 +336,7 @@ class UserController extends Controller
 
             $announces = collect();
             if (auth()->user()->role_id == 5) {
-                $announces = Announce::all()->sortByDesc('id');
+                $announces = Announce::where('date','>',Carbon::today())->get()->sortByDesc('id');
             }
 
             if (auth()->user()->role_id == 4) {
@@ -353,7 +354,7 @@ class UserController extends Controller
         else if ($type == 2) {
 //            dd(auth()->user()->announces);
             $view = view('profile.announce.index', [
-                'announces' => auth()->user()->announces,
+                'announces' => auth()->user()->announces->where('date','>',Carbon::today()),
             ])->render();
         }
         else if ($type == 3 || $type == 4 || $type == 5) {

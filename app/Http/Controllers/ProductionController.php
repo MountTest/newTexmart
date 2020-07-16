@@ -213,7 +213,7 @@ class ProductionController extends Controller
         $production->update($validated);
         $production->updateColumns();
 
-        return redirect()->route('profile');
+        return redirect()->route('newprofile');
     }
 
     /**

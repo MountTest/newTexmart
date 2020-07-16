@@ -46,6 +46,16 @@ h1, h2, h3, h4, h5{
     color: #855d02;
 }
 
+.user-delete {
+    color: #b91d19;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.user-delete:hover {
+    color: #ff1600;
+}
+
 .user-image {
     width: 100px;
     height: 100px;

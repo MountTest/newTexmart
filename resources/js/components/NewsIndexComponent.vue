@@ -41,6 +41,7 @@
                 </div>
                 <div class="col-1">
                     <span class="text-center"><i class="fas fa-user-edit fa-lg user-edit" @click="editchange(new_one.id)"></i></span>
+                    <span class="text-center ml-2"><i class="fas fa-trash fa-lg user-delete" @click="deletenews(new_one.id)"></i></span>
                 </div>
             </div>
         </div>
@@ -87,6 +88,21 @@
             editchange(id) {
                 this.$store.state.type = 2;
                 this.$store.state.news = id;
+            },
+
+            deletenews(id) {
+                console.log(id);
+                axios.get('/delete_news/' + id).then((response) => {
+                    this.news = response.data;
+                    this.$fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Новость удалена',
+                        showConfirmButton: false,
+                        backdrop: false,
+                        timer: 1500
+                    });
+                });
             }
         }
     }

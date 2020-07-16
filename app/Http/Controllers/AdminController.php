@@ -212,4 +212,11 @@ class AdminController extends Controller
         }
     }
 
+    public function deleteNews($id) {
+        NewsSite::destroy($id);
+        $news = NewsSite::all();
+
+        return $news;
+    }
+
 }
