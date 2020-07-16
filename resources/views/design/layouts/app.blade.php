@@ -96,18 +96,14 @@
 
             var server_url = window.location.href;
             var original = window.location.origin + '/';
-            console.log(original);
-            console.log(server_url);
             var btn = $(e.currentTarget);
             var scrollTop = $(window).scrollTop();
             if (scrollTop < 50 && btn.hasClass('collapsed') == false && server_url == original) {
-                console.log('success');
                 $('.menuse').removeClass('shadow-none');
                 $('.menuse').addClass('solid-nav');
                 $('.menuse').addClass('py-0');
 
             } else if (scrollTop < 50 && btn.hasClass('collapsed') == true && server_url == original) {
-                console.log('false');
                 $('.menuse').removeClass('solid-nav');
                 $('.menuse').addClass('shadow-none');
                 $('.menuse').removeClass('py-0');
