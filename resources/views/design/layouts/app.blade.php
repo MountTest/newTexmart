@@ -66,22 +66,23 @@
 <script>
         $(document).ready(function() {
             var server_url = window.location.href;
+            var original = window.location.origin;
             $(window).scroll(function() {
                 var scrollTop = $(window).scrollTop();
-                if (scrollTop >= 50 && server_url == "http://newtexmart/new-design") {
+                if (scrollTop >= 50 && server_url == original) {
                     $('.menuse').removeClass('shadow-none');
                     $('.menuse').addClass('solid-nav');
                     $('.menuse').addClass('py-0');
                     $('.menuse').removeClass('pt-3');
 
-                } else if (server_url == "http://newtexmart/new-design") {
+                } else if (server_url == original) {
                     $('.menuse').removeClass('solid-nav');
                     $('.menuse').addClass('shadow-none');
                     $('.menuse').removeClass('py-0');
                     $('.menuse').addClass('pt-3');
                 }
             });
-            if (server_url != "http://newtexmart/new-design")
+            if (server_url != original)
             {
                 $('.menuse').removeClass('shadow-none');
                 $('.menuse').addClass('solid-nav');
@@ -92,15 +93,20 @@
     </script>
     <script>
         $(document).on('click', '.navbar-toggler', function (e) {
+
             var server_url = window.location.href;
+            var original = window.location.origin;
+            // console.log(original);
             var btn = $(e.currentTarget);
             var scrollTop = $(window).scrollTop();
-            if (scrollTop < 50 && btn.hasClass('collapsed') == false && server_url == "http://newtexmart/new-design") {
+            if (scrollTop < 50 && btn.hasClass('collapsed') == false && server_url == original) {
+                console.log('success');
                 $('.menuse').removeClass('shadow-none');
                 $('.menuse').addClass('solid-nav');
                 $('.menuse').addClass('py-0');
 
-            } else if (scrollTop < 50 && btn.hasClass('collapsed') == true && server_url == "http://newtexmart/new-design") {
+            } else if (scrollTop < 50 && btn.hasClass('collapsed') == true && server_url == original) {
+                console.log('false');
                 $('.menuse').removeClass('solid-nav');
                 $('.menuse').addClass('shadow-none');
                 $('.menuse').removeClass('py-0');
