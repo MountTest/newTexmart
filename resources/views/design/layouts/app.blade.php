@@ -95,7 +95,7 @@
         $(document).on('click', '.navbar-toggler', function (e) {
 
             var server_url = window.location.href;
-            var original = window.location.origin;
+            var original = window.location.origin + '/';
             console.log(original);
             console.log(server_url);
             var btn = $(e.currentTarget);
