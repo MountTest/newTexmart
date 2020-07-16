@@ -96,7 +96,8 @@
 
             var server_url = window.location.href;
             var original = window.location.origin;
-            // console.log(original);
+            console.log(original);
+            console.log(server_url);
             var btn = $(e.currentTarget);
             var scrollTop = $(window).scrollTop();
             if (scrollTop < 50 && btn.hasClass('collapsed') == false && server_url == original) {
