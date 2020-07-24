@@ -5,7 +5,7 @@
     {{--<meta name="viewport"--}}
           {{--content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, shrink-to-fit=no">--}}
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Texmart.kg</title>
+    <title>Админ панель - Texmart.kg</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">

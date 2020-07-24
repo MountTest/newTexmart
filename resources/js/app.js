@@ -39,6 +39,9 @@ Vue.component('service-index-component', require('./components/ServiceIndexCompo
 Vue.component('production-index-component', require('./components/ProductionIndexComponent.vue').default);
 Vue.component('news-index-component', require('./components/NewsIndexComponent.vue').default);
 Vue.component('news-create-component', require('./components/NewsCreateComponent.vue').default);
+Vue.component('statistic-index-component', require('./components/StatisticIndexComponent.vue').default);
+Vue.component('check-index-component', require('./components/CheckIndexComponent.vue').default);
+Vue.component('announce-index-component', require('./components/AnnounceIndexComponent.vue').default);
 //
 // const Example = require('./components/ExampleComponent');
 

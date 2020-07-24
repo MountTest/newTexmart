@@ -189,7 +189,7 @@ class AnnounceController extends Controller
 
         $announces = collect();
         foreach ($cats as $cat) {
-            $announces = $announces->merge($cat->announces);
+            $announces = $announces->merge($cat->announces->where('check','!=',null));
         }
 //        dd($country);
         $announces = $announces->unique('id');

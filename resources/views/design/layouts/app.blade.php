@@ -30,7 +30,44 @@
     <script src="https://kit.fontawesome.com/db4d90930c.js" crossorigin="anonymous"></script>
 
     <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+            let active = false;
 
+            const lazyLoad = function() {
+                if (active === false) {
+                    active = true;
+
+                    setTimeout(function() {
+                        lazyImages.forEach(function(lazyImage) {
+                            if ((lazyImage.getBoundingClientRect().top <= window.innerHeight && lazyImage.getBoundingClientRect().bottom >= 0) && getComputedStyle(lazyImage).display !== "none") {
+                                lazyImage.src = lazyImage.dataset.src;
+                                // lazyImage.srcset = lazyImage.dataset.srcset;
+                                lazyImage.classList.remove("lazy");
+
+                                lazyImages = lazyImages.filter(function(image) {
+                                    return image !== lazyImage;
+                                });
+
+                                if (lazyImages.length === 0) {
+                                    document.removeEventListener("scroll", lazyLoad);
+                                    window.removeEventListener("resize", lazyLoad);
+                                    window.removeEventListener("orientationchange", lazyLoad);
+                                }
+                            }
+                        });
+
+                        active = false;
+                    }, 200);
+                }
+            };
+
+            document.addEventListener("scroll", lazyLoad);
+            window.addEventListener("resize", lazyLoad);
+            window.addEventListener("orientationchange", lazyLoad);
+        });
+    </script>
     <script type="text/javascript" src="{{ asset('js/jquery.lazy.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.lazy.plugins.min.js') }}"></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=1dc5f6a0-7f44-4dcf-8a38-15f7166f37dc&lang=ru_RU" type="text/javascript"></script>
@@ -75,11 +112,13 @@
                     $('.menuse').addClass('py-0');
                     $('.menuse').removeClass('pt-3');
 
+
                 } else if (server_url == original) {
                     $('.menuse').removeClass('solid-nav');
                     $('.menuse').addClass('shadow-none');
                     $('.menuse').removeClass('py-0');
                     $('.menuse').addClass('pt-3');
+
                 }
             });
             if (server_url != original)

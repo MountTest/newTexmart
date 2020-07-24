@@ -22,6 +22,7 @@
                                         <p class="line-height-110" title="{{ $announce->content }}" style="margin: 0em 0">{{ \Illuminate\Support\Str::limit($announce->content, 50) }}</p>
                                         </a>
                                             <div class="d-flex">
+                                                <div class="font-size-12 mr-4 {{ $announce->check == null ? 'text-danger': 'text-success' }}">{{ $announce->check == null ? 'На рассмотрении': 'Активен' }}</div>
                                         <div class="font-size-12 d-lg-block d-none">{{ \Carbon\Carbon::make($announce->created_at)->format('d.m.Y') }}</div>
                                             <div class="ml-lg-5 ml-3">
                                                 {{--<i class="fas fa-pencil-alt fa-lg edit-icon panel-icon" title="Редактировать объявление"></i>--}}

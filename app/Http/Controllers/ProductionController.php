@@ -359,7 +359,7 @@ class ProductionController extends Controller
 
         $productions = collect();
         foreach ($cats as $cat) {
-            $productions = $productions->merge($cat->productions);
+            $productions = $productions->merge($cat->productions->where('check','!=', null));
         }
         $productions = $productions->unique('id');
 

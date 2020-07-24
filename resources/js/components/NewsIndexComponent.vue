@@ -19,7 +19,7 @@
                 <div class="col-4">
                     <span class="list-title">Изображение</span>
                 </div>
-                <div class="col-7">
+                <div class="col-6">
                     <span class="list-title">Название</span>
                 </div>
                 <!--<div class="col-3">-->
@@ -28,7 +28,7 @@
                 <!--<div class="col-3">-->
                     <!--<span class="list-title">Номер телефона</span>-->
                 <!--</div>-->
-                <div class="col-1">
+                <div class="col-2">
                     <span class="list-title">Действие</span>
                 </div>
             </div>
@@ -36,10 +36,10 @@
                 <div class="col-4 px-5">
                     <img :src="storage_url + '/storage/' + new_one.preview" class="img-fluid" style="border-radius: 0%;" alt="">
                 </div>
-                <div class="col-7">
+                <div class="col-6">
                     <span class="">{{ new_one.title }}</span>
                 </div>
-                <div class="col-1">
+                <div class="col-2">
                     <span class="text-center"><i class="fas fa-user-edit fa-lg user-edit" @click="editchange(new_one.id)"></i></span>
                     <span class="text-center ml-2"><i class="fas fa-trash fa-lg user-delete" @click="deletenews(new_one.id)"></i></span>
                 </div>
@@ -91,7 +91,6 @@
             },
 
             deletenews(id) {
-                console.log(id);
                 axios.get('/delete_news/' + id).then((response) => {
                     this.news = response.data;
                     this.$fire({

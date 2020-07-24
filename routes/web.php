@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 Route::get('/', function () {
-    $announces = Announce::all()->reverse();
+    $announces = Announce::where('check','!=',null)->get()->reverse();
     $feedbacks = \App\Feedback::all()->reverse();
     return view('design.welcome', [
         'announces' => $announces,
@@ -87,12 +87,23 @@ Route::prefix('/admin')->name('admin.')->middleware('admin')->group(function (){
     Route::get('/search_product/{value}/{id}', 'AdminController@searchProducts')->name('search_product');
     Route::post('/update_product/{id}', 'AdminController@updateProduct')->name('update_product');
 
+    Route::get('/getannounces', 'AdminController@getAnnounces')->name('getannounces');
+    Route::get('/search_announce/{value}', 'AdminController@searchAnnounces')->name('search_announce');
+    Route::post('/update_announce', 'AdminController@updateAnnounce')->name('update_announce');
+
     Route::get('/getnews', 'AdminController@getNews')->name('getnews');
     Route::get('/get_new_edit/{id}', 'AdminController@getNewEdit')->name('get_new_edit');
     Route::get('/search_news/{value}', 'AdminController@searchNews')->name('search_news');
     Route::post('/store_new', 'AdminController@storeNews')->name('store_new');
+
+    Route::get('/get_for_check', 'AdminController@getForCheck')->name('get_for_check');
+    Route::post('/publish_product', 'AdminController@PublishProduct')->name('publish_product');
+    Route::post('/publish_announce', 'AdminController@PublishAnnounce')->name('publish_announce');
 });
+    Route::get('delete_announces/{id}','AdminController@deleteAnnounces')->name('delete_announces');
+    Route::get('/getstatistic', 'AdminController@getStatistic')->name('getstatistic');
     Route::get('/delete_news/{id}', 'AdminController@deleteNews')->name('delete_news');
+    Route::get('/delete_products/{id}/{type}', 'AdminController@deleteProducts')->name('delete_products');
 
 
 Route::get('/profile', 'UserController@index')->name('profile');
@@ -120,6 +131,8 @@ Route::get('/get-categories', 'UserController@getCategories')->name('get.categor
 
 Route::get('/login/{provider}', 'Auth\LoginController@redirectToProvider')->name('google.redirect');
 Route::get('/login/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('google.callback');
+
+Route::get('/rolling_users', 'AdminController@rolling_users');
 
 
 

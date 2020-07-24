@@ -25,7 +25,7 @@
                 <div class="col-3">
                     <span class="list-title">Номер телефона</span>
                 </div>
-                <div class="col-1">
+                <div class="col-2">
                     <span class="list-title">Действие</span>
                 </div>
             </div>
@@ -42,8 +42,9 @@
                 <div class="col-3">
                     <span class="">{{ product.phone1}}</span>
                 </div>
-                <div class="col-1">
+                <div class="col-2">
                     <span class="text-center"><i class="fas fa-user-edit fa-lg user-edit" @click="product_profile(product.id)"></i></span>
+                    <span class="text-center ml-2"><i class="fas fa-trash fa-lg user-delete" @click="deleteitems(product.id)"></i></span>
                 </div>
                 <div class="col-12 user-profile py-4 mt-2" v-if="profile == product.id">
                     <div class="row">
@@ -161,6 +162,20 @@
                         timer: 1500
                     })
                 })
+            },
+
+            deleteitems(id) {
+                axios.get('/delete_products/' + id + '/' + this.type).then((response) => {
+                    this.products = response.data;
+                    this.$fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Товар удален',
+                        showConfirmButton: false,
+                        backdrop: false,
+                        timer: 1500
+                    });
+                });
             }
 
         }
