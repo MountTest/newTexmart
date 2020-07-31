@@ -202,9 +202,11 @@
         {{--@include('design.partials.our_services')--}}
     {{--</section>--}}
 
-    <section>
-        @include('design.partials.reviews')
-    </section>
+    {{--<section>--}}
+        {{--@include('design.partials.reviews')--}}
+    {{--</section>--}}
+
+@if(count(\App\NewsSite::all()) != null)
 
     <section>
         <div class="container py-5">
@@ -216,7 +218,7 @@
             <?php
                 $news = \App\NewsSite::all()->take(3);
             ?>
-                @if(isset($news[0]))
+            @if(isset($news[0]))
             <div class="row">
                 <div class="col-12 div-lazy">
                     <div class="card shadow-sm mb-3 card-scale">
@@ -285,7 +287,7 @@
             </div>
         </div>
     </section>
-
+@endif
     {{--<section>--}}
         {{--<div class="container py-5">--}}
             {{--<div class="row mb-4">--}}
