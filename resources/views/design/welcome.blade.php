@@ -202,9 +202,9 @@
         {{--@include('design.partials.our_services')--}}
     {{--</section>--}}
 
-    {{--<section>--}}
-        {{--@include('design.partials.reviews')--}}
-    {{--</section>--}}
+    <section>
+        @include('design.partials.reviews')
+    </section>
 
 @if(count(\App\NewsSite::all()) != null)
 
