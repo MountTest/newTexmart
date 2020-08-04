@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Announce;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,5 +26,15 @@ class HomeController extends Controller
     public function index()
     {
         return redirect('/profile');
+    }
+
+    public function announces_date()
+    {
+//        dd();
+        $announces = Announce::all();
+        foreach ($announces as $announce) {
+            $announce->date = Carbon::now()->subMonths(-2);
+            $announce->save();
+        }
     }
 }

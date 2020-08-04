@@ -1,5 +1,7 @@
 @extends('design.layouts.app')
-
+@section('title')
+    Производство одежды в Киргизии по низким ценам | texmart.kg
+@endsection
 @section('content')
 {{--@dd(auth())--}}
     <div class="container-fluid" style="margin-top: 61px;">

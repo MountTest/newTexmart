@@ -1,5 +1,7 @@
 @extends('layouts.promo')
-
+@section('title')
+    Производство одежды в Киргизии по низким ценам | texmart.kg
+@endsection
 @section('content')
 
     @includeWhen(\Illuminate\Support\Facades\Session::has('flash'), 'partials.alerts.login_email')

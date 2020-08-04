@@ -1,5 +1,7 @@
 @extends('layouts.promo')
-
+@section('title')
+    Производство одежды в Киргизии по низким ценам | texmart.kg
+@endsection
 @section('content')
     <div class="promo-register">
         <div class="backdrop"></div>

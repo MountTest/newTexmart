@@ -1,4 +1,18 @@
 @extends('design.layouts.app')
+@section('title')
+        Производство одежды в Киргизии по низким ценам | texmart.kg
+@endsection
+@section('seo_content')
+    <meta name="description" content="Texmart.kg это первая интернет-платформа оптовых производителей текстильной и швейной продукции Кыргызской Республики. Вы можете заказать одежду оптом по очень низким ценам! Ведение бизнеса в формате В2В. Услуга логистики и доставки. Оформление документов экспортно-импортных документов.">
+    <meta name="keywords" content="texmart, техмарт, оптом, одежда, оптовая, бишкек, киргизия, кыргызстан, детская, мужская, женская, батальные, размеры, купить, купить одежду, оптовики, оптовая одежда, купить оптом, одежда оптом">
+@endsection
+@section('og_content')
+        <meta name="description" content="Заявки заказчиков на Texmart.kg">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ request()->url() }}" />
+    <meta property="og:image" content="{{ asset('img/logo.png') }}" />
+    <meta property="og:description" content="База заявок клиентов Texmart.kg">
+@endsection
 @section('content')
     <div class="mobile-backdrop"></div>
     <div class="mobile-catalog py-5 px-3" id="mobile-catalog">

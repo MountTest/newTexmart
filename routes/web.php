@@ -28,6 +28,7 @@ Route::get('/', function () {
 Route::get('/new-design/catalog', 'ProductionController@new_index')->name('new-design/catalog');
 Route::get('productions/new_filter', 'ProductionController@new_filter')->name('productions.new_filter');
 Route::get('/new-design/announces/list', 'AnnounceController@list')->name('announces.list');
+Route::get('announces_date','HomeController@announces_date')->name('announces_date');
 
 Route::get('/announce/filter', 'AnnounceController@new_filter')->name('announce/filter');
 Route::post('/like_announce', 'AnnounceController@like')->name('like_announce');

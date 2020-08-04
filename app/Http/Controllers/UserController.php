@@ -335,7 +335,7 @@ class UserController extends Controller
             $productions = Production::where('user_id', auth()->user()->id)->get();
 
             $announces = collect();
-            if (auth()->user()->role_id == 5) {
+            if (auth()->user()->role_id == 5 || auth()->user()->role_id == 1) {
                 $announces = Announce::where('date','>',Carbon::today())->get()->sortByDesc('id');
             }
 
