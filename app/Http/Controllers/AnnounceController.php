@@ -207,7 +207,7 @@ class AnnounceController extends Controller
 
         return response()->json([
             'html' => view('design.pages.announce.includes.single', [
-                'announces' => $announces,
+                'announces' => $announces->reverse(),
             ])->render(),
             'announces' => $announces,
             'count' => count($announces),
