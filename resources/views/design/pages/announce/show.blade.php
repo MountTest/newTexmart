@@ -13,8 +13,8 @@
                         </div>
                     @else
                         <div class="buttons_customer"></div>
-                            <a href="{{ route('login') }}">
-                                <button class="btn text-white px-5 py-2 texmart-border-radius texmart-bg-primary fade-link">
+                            <a class="fade-link " href="{{ route('login') }}">
+                                <button class="btn text-white px-5 py-2 texmart-border-radius texmart-bg-primary ">
                                     <span class="btn-text">Показать контакты</span>
                                 </button>
                             </a>

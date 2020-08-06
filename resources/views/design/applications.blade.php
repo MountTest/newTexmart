@@ -30,6 +30,12 @@
                                             </div>
                                         </div>
                                     @endif
+                                    <div class="d-flex align-items-center justify-content-end ml-auto">
+                                        <div class="small text-right">
+                                        <p class="mb-0">Дата публикации:</p>
+                                        <p class="mb-0 font-size-14">{{ \Carbon\Carbon::parse($announce->created_at)->format('d.m.y')}}</p>
+                                    </div>
+                                    </div>
                                 </div>
 
                             </div>
