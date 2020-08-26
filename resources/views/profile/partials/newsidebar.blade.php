@@ -7,7 +7,7 @@
             <span class="ml-3 font-weight-bold sidebar-title">{{ __('Лента') }}</span>
         </div>
     {{--</a>--}}
-    @if(auth()->user()->role_id == 4 || auth()->user()->role_id == 1)
+    @if(auth()->user()->role_id == 4 || auth()->user()->role_id == 1 || auth()->user()->role_id == 5)
         {{--<a href="{{ route('profile.announce.index') }}" class="list-group-item list-group-item-action step1 {{ request()->is('profile/announce*') ? 'active' : '' }}" >{{ __('Разместить заказ') }}</a>--}}
         {{--<a href="{{ route('profile.announce.index') }}">--}}
             <div class="sidebar-point px-5 py-4 d-flex align-items-center border-bottom switch {{ request()->is('profile/announce*') ? 'active' : '' }}" data-type="switch" data-id="2">
