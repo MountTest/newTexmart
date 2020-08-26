@@ -336,7 +336,7 @@ class UserController extends Controller
 
             $announces = collect();
             if (auth()->user()->role_id == 5 || auth()->user()->role_id == 1) {
-                $announces = Announce::where('date','>',Carbon::today())->get()->sortByDesc('id');
+                $announces = Announce::where('check',1)->get()->sortByDesc('id');
             }
 
             if (auth()->user()->role_id == 4) {
